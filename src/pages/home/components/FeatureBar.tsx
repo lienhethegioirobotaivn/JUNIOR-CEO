@@ -34,13 +34,16 @@ export function FeatureBar() {
             className={`flex items-center gap-4 px-6 transition-all duration-200 ease-in-out hover:scale-103 ${index !== features.length - 1 ? "border-r border-[#3d3326]" : ""} flex-1 min-w-62.5`}
           >
             <div className="text-[#d4b075]">
-              <Icon size={32} strokeWidth={1.5} />
+              <Icon
+                className="size-11 sm:size-12.5 lg:size-15"
+                strokeWidth={1.5}
+              />
             </div>
             <div className="flex flex-col">
-              <h3 className="text-[#e6c891] font-bold text-lg tracking-wide">
+              <h3 className="text-[#e6c891] font-bold sm:text-2xl lg:text-lg tracking-wide">
                 {item.title}
               </h3>
-              <p className="text-[#a3a3a3] text-sm leading-tight mt-0.5">
+              <p className="text-[#a3a3a3] sm:text-xl lg:text-sm leading-tight mt-0.5">
                 {item.description}
               </p>
             </div>

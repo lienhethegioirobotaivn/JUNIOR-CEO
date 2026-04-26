@@ -30,7 +30,7 @@ export function SevenModule() {
   return (
     <section className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl py-6 px-4">
       <div className="mx-auto">
-        <h2 className="text-white text-center text-2xl lg:text-3xl font-semibold mb-8 uppercase tracking-wide">
+        <h2 className="text-white text-center text-2xl sm:text-3xl lg:text-3xl font-semibold mb-8 uppercase tracking-wide">
           7 Modules vận hành doanh nghiệp thật
         </h2>
 
@@ -48,7 +48,7 @@ export function SevenModule() {
                 </span>
               </div>
 
-              <h3 className="text-white/80 text-sm md:text-sm font-medium leading-tight mt-2">
+              <h3 className="text-white/80 text-sm sm:text-[16px] lg:text-md font-medium leading-tight mt-2">
                 {item.title}
               </h3>
             </div>

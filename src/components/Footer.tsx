@@ -9,19 +9,18 @@ import {
 
 export function Footer() {
   return (
-    <footer className="bg-black text-gray-300 mt-14 pt-8 border-t border-[#1a1a1a]">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-        {/* Brand Section */}
+    <footer className="bg-black text-gray-300 mt-14 pt-8 border-t border-white/30">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-4 xl:gap-8">
         <div className="lg:col-span-3 space-y-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center">
             <img
               src={LogoJuniorCEO}
               alt="LogoJuniorCEO"
-              className="w-full h-full"
+              className="w-40 h-auto"
             />
           </div>
           <div>
-            <p className="text-sm leading-relaxed max-w-sm">
+            <p className="text-sm leading-relaxed">
               Kiến tạo thế hệ doanh nhân trẻ bản lĩnh, sáng tạo và có tầm ảnh
               hưởng.
             </p>
@@ -41,7 +40,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Explore Section */}
         <div className="lg:col-span-2">
           <h3 className="text-[#d4a76a] font-bold mb-6">KHÁM PHÁ</h3>
           <ul className="space-y-4 text-sm">
@@ -60,7 +58,6 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Information Section */}
         <div className="lg:col-span-2">
           <h3 className="text-[#d4a76a] font-bold mb-6">THÔNG TIN</h3>
           <ul className="space-y-4 text-sm">
@@ -79,40 +76,37 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Contact Section */}
         <div className="lg:col-span-2 space-y-4 text-sm">
           <h3 className="text-[#d4a76a] font-bold mb-6">LIÊN HỆ</h3>
           <div className="flex items-center gap-3">
-            <Phone size={16} /> 0815 66 55 58
+            <Phone size={16} className="shrink-0" /> 0815 66 55 58
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-5 flex justify-center">
-              <Mail size={18} />
-            </div>
-            hello@juniorceo.edu.vn
+            <Mail size={18} className="shrink-0" />
+            <span className="break-all">hello@juniorceo.edu.vn</span>
           </div>
           <div className="flex items-center gap-3">
-            <Globe size={16} /> juniorceo.edu.vn
+            <Globe size={16} className="shrink-0" /> juniorceo.edu.vn
           </div>
           <div className="flex items-start gap-3">
-            <MapPin size={16} /> TP. Hồ Chí Minh, Việt Nam
+            <MapPin size={16} className="shrink-0 mt-0.5" /> TP. Hồ Chí Minh,
+            Việt Nam
           </div>
         </div>
 
-        {/* Newsletter Box */}
         <div className="lg:col-span-3">
-          <div className="bg-[#111] px-6 py-4 border border-[#222] rounded-lg max-w-lg">
+          <div className="bg-[#111] px-6 py-4 border border-[#222] rounded-lg w-full">
             <h3 className="text-[#d4a76a] font-bold mb-2">NHẬN BẢN TIN</h3>
             <p className="text-xs mb-4 text-gray-400">
               Cập nhật kiến thức & cơ hội đặc biệt dành riêng cho phụ huynh
             </p>
-            <div className="flex bg-[#0a0a0a] border border-[#333] p-1">
+            <div className="flex w-full bg-[#0a0a0a] border border-[#333] p-1 rounded-md">
               <input
                 type="email"
                 placeholder="Nhập email của bạn"
-                className="bg-transparent flex-1 px-3 outline-none text-sm"
+                className="bg-transparent w-full px-3 outline-none text-sm"
               />
-              <button className="bg-[#d4a76a]/85 hover:bg-[#d4a76a] bg- p-2 text-[#0a0a0a] rounded-md cursor-pointer">
+              <button className="bg-[#d4a76a]/85 hover:bg-[#d4a76a] p-2 text-[#0a0a0a] rounded-sm cursor-pointer shrink-0">
                 <ArrowRight size={20} />
               </button>
             </div>

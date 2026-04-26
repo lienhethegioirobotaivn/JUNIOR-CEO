@@ -27,9 +27,9 @@ const roadmapData = [
 
 export function Roadmap() {
   return (
-    <section className="pt-6">
+    <section className="pt-6 sm:mt-5">
       <div className="mx-auto">
-        <h2 className="text-white text-center text-2xl md:text-3xl font-semibold tracking-widest uppercase">
+        <h2 className="text-white text-center text-2xl sm:text-3xl font-semibold uppercase">
           Lộ trình 3 tháng: Học - Làm - Kiếm tiền
         </h2>
 
