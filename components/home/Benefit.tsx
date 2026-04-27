@@ -1,4 +1,4 @@
-import BenefitImg from "@/assets/home/BenefitImg.png";
+import Image from "next/image";
 import { Target, Lightbulb, Zap, Award } from "lucide-react";
 
 const benefits = [
@@ -29,7 +29,7 @@ export function Benefit() {
     <section className="bg-black py-4">
       <div className="mx-auto">
         <div className="flex flex-col lg:flex-row border border-[#333] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-2xl">
-          <div className="flex flex-col py-4">
+          <div className="flex flex-col py-4 w-full">
             <h2 className="text-white text-center text-3xl sm:text-3xl lg:text-3xl font-semibold mb-8 tracking-wide">
               CHƯƠNG TRÌNH MANG LẠI CHO CON
             </h2>
@@ -56,11 +56,13 @@ export function Benefit() {
             </div>
           </div>
 
-          <div className="lg:w-[35%] w-full h-75 lg:h-auto overflow-hidden border-l border-[#333]">
-            <img
-              src={BenefitImg}
+          <div className="lg:w-[35%] w-full h-75 lg:h-auto overflow-hidden border-l border-[#333] relative">
+            <Image
+              src="/home/BenefitImg.png"
               alt="BenefitImg"
-              className="w-full h-full object-cover object-right"
+              fill
+              sizes="100"
+              className="object-cover object-right"
             />
           </div>
         </div>

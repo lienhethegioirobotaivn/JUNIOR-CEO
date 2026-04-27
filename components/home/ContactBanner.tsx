@@ -1,5 +1,3 @@
-import LeftContactBannerImg from "@/assets/home/LeftContactBannerImg.png";
-import RightContactBannerImg from "@/assets/home/RightContactBannerImg.png";
 import {
   MessageCircleMore,
   MoveRight,
@@ -11,9 +9,10 @@ import {
 export function ContactBanner() {
   return (
     <section className="flex flex-col lg:flex-row w-full overflow-hidden text-white">
+      {/* Left side */}
       <div
-        className="w-full lg:w-4/7 flex items-center justify-end p-6 bg-cover bg-center"
-        style={{ backgroundImage: `url(${LeftContactBannerImg})` }}
+        className="w-full lg:w-4/7 flex items-center justify-center lg:justify-end p-6 bg-cover bg-center"
+        style={{ backgroundImage: `url('/home/LeftContactBannerImg.png')` }}
       >
         <div className="flex flex-col items-center gap-4 py-6">
           <div className="text-center space-y-2 mb-1">
@@ -34,13 +33,15 @@ export function ContactBanner() {
         </div>
       </div>
 
+      {/* Divider */}
       <div className="relative items-center">
-        <div className="absolute inset-y-0 w-px bg-linear-to-b from-transparent via-[#d4a76a] to-transparent" />
+        <div className="absolute inset-y-0 w-px bg-linear-to-b from-transparent via-[#d4a76a] to-transparent hidden lg:block" />
       </div>
 
+      {/* Right side */}
       <div
-        className="w-full lg:w-3/7 flex flex-col justify-center gap-4 p-8 lg:px-6 lg:p-0 bg-cover bg-center border-l border-white/20"
-        style={{ backgroundImage: `url(${RightContactBannerImg})` }}
+        className="w-full lg:w-3/7 flex flex-col justify-center gap-4 p-8 lg:px-6 bg-cover bg-center border-l border-white/20"
+        style={{ backgroundImage: `url('/home/RightContactBannerImg.png')` }}
       >
         <div className="flex items-center gap-3">
           <Phone size={20} className="text-yellow-600" />

@@ -1,6 +1,5 @@
-import HeroImg from "@/assets/home/HeroImg.png";
-import FourPeopleHeads from "@/assets/home/4PeopleHeads.png";
-import HeroBadge from "@/assets/home/HeroBadge.png";
+import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -9,41 +8,30 @@ import {
   MessageCircleMore,
   Sparkle,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Stats = [
-  {
-    icon: Clock,
-    firstParagraph: "3 THÁNG",
-    secondParagraph: "CHƯƠNG TRÌNH",
-  },
+  { icon: Clock, firstParagraph: "3 THÁNG", secondParagraph: "CHƯƠNG TRÌNH" },
   {
     icon: BriefcaseBusiness,
     firstParagraph: "1 DỰ ÁN",
     secondParagraph: "THỰC TẾ",
   },
-  {
-    icon: Coins,
-    firstParagraph: "KIẾM TIỀN",
-    secondParagraph: "THẬT",
-  },
+  { icon: Coins, firstParagraph: "KIẾM TIỀN", secondParagraph: "THẬT" },
 ];
 
 export function Hero() {
   return (
     <section
       className="relative w-full bg-black text-white pt-12 pb-4 px-8 bg-cover lg:bg-center xl:bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${HeroImg})` }}
+      style={{ backgroundImage: `url('/home/HeroImg.png')` }}
     >
       <div className="lg:flex mx-auto gap-12 items-center">
         <div className="w-full lg:w-[40%] space-y-4">
           {/* Top tag */}
-          <div className="flex items-center justify-center lg:justify-normal gap-4 mb-1 lg:ml-2 transition-all duration-200 ease-in-out hover:scale-102">
-            <div>
-              <Sparkle className="size-3 text-[#fce094] fill-current drop-shadow-[0_0_5px_rgba(252,224,148,0.8)]" />
-            </div>
+          <div className="flex items-center justify-center lg:justify-normal gap-4 mb-3 lg:ml-2 transition-all duration-200 ease-in-out hover:scale-102">
+            <Sparkle className="size-3 text-[#fce094] fill-current drop-shadow-[0_0_5px_rgba(252,224,148,0.8)]" />
             <div className="flex items-center w-fit py-2 px-3 bg-white/5 border border-white/30 rounded-full">
-              <p className="sm:text-xl lg:text-xs bg-linear-to-r from-[#d4b075] to-[#e8d0a9] bg-clip-text text-transparent font-semibold tracking-wider">
+              <p className="p-2 lg:p-0 sm:text-xl lg:text-xs bg-linear-to-r from-[#d4b075] to-[#e8d0a9] bg-clip-text text-transparent font-semibold tracking-wider">
                 CHƯƠNG TRÌNH ĐÀO TẠO DOANH NHÂN TRẺ
               </p>
             </div>
@@ -72,9 +60,7 @@ export function Hero() {
                   key={index}
                   className="flex items-center justify-center bg-[#1a1a1a] border border-[#3d3326] gap-2 lg:gap-3 p-1 lg:p-2 rounded-xl transition-all duration-200 ease-in-out hover:scale-105"
                 >
-                  <div>
-                    <Icon className="text-[#e6c891]" />
-                  </div>
+                  <Icon className="text-[#e6c891]" />
                   <div className="flex flex-col justify-center">
                     <p className="text-[11px] sm:text-lg lg:text-sm font-semibold text-[#e6c891]">
                       {item.firstParagraph}
@@ -90,7 +76,7 @@ export function Hero() {
 
           {/* Actions buttons */}
           <div className="grid grid-cols-2 gap-3 lg:gap-4 h-11">
-            <Link to={"/dang-ky"}>
+            <Link href="/dang-ky">
               <button className="flex justify-center w-full h-full font-semibold bg-linear-to-r from-[#d4b075] to-[#c59c5d] rounded-md text-black items-center gap-1 lg:gap-2 hover:opacity-90 whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer">
                 <p className="text-sm sm:text-lg">ĐĂNG KÝ NGAY</p>
                 <ArrowRight className="size-3 lg:size-4" />
@@ -107,10 +93,12 @@ export function Hero() {
           {/* Target audience */}
           <div className="grid grid-cols-4 items-center transition-all duration-200 ease-in-out hover:scale-105 lg:mt-8">
             <div className="col-span-1">
-              <img
-                src={FourPeopleHeads}
+              <Image
+                src="/home/4PeopleHeads.png"
                 alt="FourPeopleHeads"
-                className="w-full"
+                width={100}
+                height={100}
+                className="w-full h-full"
               />
             </div>
             <div className="col-span-3">
@@ -121,7 +109,13 @@ export function Hero() {
 
         {/* Badge */}
         <div className="mx-auto mt-6 lg:mt-0 lg:absolute lg:bottom-0 lg:right-6 size-65 sm:size-90 lg:size-40 transition-all duration-200 ease-in-out hover:scale-105">
-          <img src={HeroBadge} alt="HeroBadge" className="w-full h-full" />
+          <Image
+            src="/home/HeroBadge.png"
+            alt="HeroBadge"
+            width={200}
+            height={200}
+            className="w-full h-full"
+          />
         </div>
       </div>
     </section>

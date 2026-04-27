@@ -33,19 +33,19 @@ export function Roadmap() {
           Lộ trình 3 tháng: Học - Làm - Kiếm tiền
         </h2>
 
-        <div className="py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-2 lg:gap-4">
           {roadmapData.map((item, index) => (
             <div
               key={index}
-              className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl py-3 grid grid-cols-12 items-center gap-1 hover:border-yellow-500 transition-all duration-200 ease-in-out hover:scale-103"
+              className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl p-3 grid grid-cols-12 gap-1 hover:border-yellow-500 transition-all duration-200 ease-in-out hover:scale-103"
             >
-              <div className="col-span-4 text-yellow-400 flex justify-center">
-                <div className="bg-yellow-500/10 p-4 rounded-full">
+              <div className="col-span-4 text-yellow-400 flex items-center justify-center">
+                <div className="bg-yellow-500/10 p-4 sm:p-3 lg:p-5 rounded-full">
                   {item.icon}
                 </div>
               </div>
 
-              <div className="col-span-8">
+              <div className="col-span-8 pl-1 lg:pl-0">
                 <h3 className="text-[#d4b075] font-semibold text-xl mb-2">
                   {item.month}: {item.title}
                 </h3>
