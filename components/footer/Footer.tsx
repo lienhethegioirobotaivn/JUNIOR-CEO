@@ -88,14 +88,14 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-3">
             <Mail size={18} className="shrink-0" />
-            <span className="break-all">hello@juniorceo.edu.vn</span>
+            <span className="break-all">lienhe.juniorceo@gmail.com</span>
           </div>
           <div className="flex items-center gap-3">
             <Globe size={16} className="shrink-0" /> juniorceo.edu.vn
           </div>
           <div className="flex items-start gap-3">
-            <MapPin size={16} className="shrink-0 mt-0.5" /> TP. Hồ Chí Minh,
-            Việt Nam
+            <MapPin size={16} className="shrink-0 mt-0.5" />
+            123 Trương Định, phường Xuân Hòa, TPHCM
           </div>
         </div>
 

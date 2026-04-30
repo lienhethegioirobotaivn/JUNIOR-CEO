@@ -40,7 +40,7 @@ export function Benefit({
   return (
     <section className="bg-black py-4">
       <div className="mx-auto">
-        <div className="flex flex-col lg:flex-row border border-[#333] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-2xl">
+        <div className="flex flex-col lg:flex-row bg-[#0a0a0a] rounded-2xl border border-transparent bg-clip-padding relative before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-[linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] before:content-[''] shadow-[0_0_5px_rgba(245,210,122,0.5)]">
           <div className="flex flex-col py-4 w-full">
             <h2 className="text-white/85 text-center text-3xl sm:text-3xl lg:text-3xl font-semibold mb-8 tracking-wide">
               {item17}

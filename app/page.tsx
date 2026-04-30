@@ -11,8 +11,10 @@ import {
 import { getTrangChu } from "@/services/trang-chu-service";
 
 export const metadata: Metadata = {
-  title: "JUNIOR CEO",
-  description: "Trang chủ Junior CEO",
+  title:
+    "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi - Đào tạo Thế hệ Kế cận",
+  description:
+    "Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi - Đào tạo Thế hệ Kế cận",
 };
 
 export default async function HomePage() {
@@ -36,7 +38,7 @@ export default async function HomePage() {
         item11={data.item11}
         item12={data.item12}
       />
-      <div className="px-8 space-y-2">
+      <div className="px-8 space-y-8">
         <FeatureBar
           item13={data.item13}
           item14={data.item14}

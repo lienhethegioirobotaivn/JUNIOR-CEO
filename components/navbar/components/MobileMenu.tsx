@@ -37,7 +37,7 @@ export function MobileMenu({
             key={`${item.label}-${index}`}
             href={item.endpoint}
             className={`text-white hover:text-yellow-400 py-3 px-2 border-b border-gray-900 transition-colors flex items-center justify-between ${
-              isActive ? "text-yellow-400" : ""
+              isActive ? "text-[#D4AF37]!" : ""
             }`}
             onClick={() => setIsOpen(false)}
           >

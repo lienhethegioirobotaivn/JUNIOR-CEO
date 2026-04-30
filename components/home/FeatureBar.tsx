@@ -35,7 +35,7 @@ export function FeatureBar({
   ];
 
   return (
-    <div className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl py-6 grid grid-cols-1 lg:grid-cols-4 justify-center items-center w-full mx-auto shadow-xl gap-3">
+    <div className="bg-[#0a0a0a] border border-transparent bg-clip-padding relative before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-[linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] before:content-[''] shadow-[0_0_5px_rgba(245,210,122,0.5)] rounded-2xl py-6 grid grid-cols-1 lg:grid-cols-4 justify-center items-center w-full mx-auto gap-3">
       {features.map((item, index) => {
         return (
           <div

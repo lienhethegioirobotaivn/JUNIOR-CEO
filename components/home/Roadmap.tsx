@@ -35,7 +35,7 @@ export function Roadmap({ item31, item32, item33, item34 }: RoadmapProps) {
           {roadmapData.map((item, index) => (
             <div
               key={index}
-              className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl p-3 grid grid-cols-12 gap-1 hover:border-yellow-500 transition-all duration-200 ease-in-out hover:scale-103"
+              className="bg-[linear-gradient(#0a0a0a,#0a0a0a) linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content border border-transparent relative rounded-2xl p-3 grid grid-cols-12 gap-1 shadow-[0_0_5px_rgba(245,210,122,0.5)] transition-all duration-200 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_5px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a) linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)]"
             >
               <div className="col-span-4 text-yellow-400 flex items-center justify-center">
                 <div className="flex items-center justify-center w-25 h-25 bg-yellow-500/10 p-4 sm:p-3 lg:p-5 rounded-full">

@@ -22,9 +22,7 @@ export function NavLinks({ links }: NavLinksProps) {
           <Link
             key={`${item.label}-${index}`}
             href={item.endpoint}
-            className={`text-white hover:text-yellow-400 text-sm font-medium transition-all duration-200 ease-in-out hover:scale-102 whitespace-nowrap ${
-              isActive ? "text-yellow-400 font-bold" : ""
-            }`}
+            className={`text-white hover:text-[#D4AF37] text-sm font-medium transition-all duration-200 ease-in-out hover:scale-102 whitespace-nowrap ${isActive ? "text-[#D4AF37]! font-bold" : ""}`}
           >
             {item.label}
           </Link>

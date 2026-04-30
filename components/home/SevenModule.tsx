@@ -54,7 +54,7 @@ export function SevenModule({
   ];
 
   return (
-    <section className="bg-[#0a0a0a] border border-[#3d3326] rounded-2xl py-6 px-4">
+    <section className="bg-[#0a0a0a] border border-transparent bg-clip-padding relative before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-[linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] before:content-[''] shadow-[0_0_5px_rgba(245,210,122,0.5)] rounded-2xl py-6 px-4">
       <div className="mx-auto">
         <h2 className="text-white/90 text-center text-2xl sm:text-3xl lg:text-3xl font-semibold mb-8 uppercase tracking-wide">
           {item23}

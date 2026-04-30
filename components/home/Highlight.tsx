@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { UserCircle } from "lucide-react";
 import { TrangChuData } from "@/services/trang-chu-service";
+import Link from "next/link";
 
 type HighlightProps = Pick<
   TrangChuData["pageBy"]["trangchu"],
@@ -19,19 +20,21 @@ export function Highlight({
   return (
     <section className="bg-black py-8 sm:pt-2 lg:py-8 text-white">
       <div className="mx-auto">
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-4 mb-4 text-xl sm:text-3xl lg:text-lg font-semibold lg:font-normal">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-4 mb-6 text-xl sm:text-3xl lg:text-lg font-semibold lg:font-normal">
           <span>{item35.textLeft}</span>
           {item35.textMiddle && (
-            <div className="h-full bg-linear-to-b from-[#d4af37] to-[#b8860b] px-2 lg:px-6 py-1 lg:py-1 rounded-md font-bold text-black">
-              {item35.textMiddle}
-            </div>
+            <Link href={"/"}>
+              <button className="h-full bg-linear-to-b from-[#d9a05b] to-[#8a5d2e] px-2 lg:px-6 py-1 lg:py-1 rounded-md font-bold text-black transition-all duration-200 ease-in-out hover:scale-[1.03] cursor-pointer">
+                {item35.textMiddle}
+              </button>
+            </Link>
           )}
           <span className="text-center">{item35.textRight}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
-          <div className="lg:col-span-2 flex border border-yellow-700/50 hover:border-yellow-500 rounded-2xl bg-gray-900/50 overflow-hidden transition-all duration-200 ease-in-out hover:scale-103">
-            {/* Part 1 */}
+          {/* Part 1 */}
+          <div className="lg:col-span-2 flex bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content,border-box border border-transparent relative rounded-2xl shadow-[0_0_5px_rgba(245,210,122,0.5)] transition-all duration-200 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_5px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)]">
             <div className="w-2/5 relative">
               <Image
                 src={item36.image.node.sourceUrl}
@@ -55,7 +58,7 @@ export function Highlight({
           </div>
 
           {/* Part 2 */}
-          <div className="lg:col-span-2 border border-yellow-700/50 hover:border-yellow-500 p-4 sm:p-6 lg:p-4 rounded-2xl bg-gray-900/50 transition-all duration-200 ease-in-out hover:scale-103">
+          <div className="lg:col-span-2 bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content,border-box border border-transparent relative shadow-[0_0_5px_rgba(245,210,122,0.5)] hover:scale-[1.03] hover:shadow-[0_0_5px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)] p-4 sm:p-6 lg:p-4 rounded-2xl bg-gray-900/50 transition-all duration-200 ease-in-out hover:scale-103">
             <h3 className="text-[#d4b075] font-bold text-lg sm:text-3xl lg:text-lg mb-4">
               {item37.label}
             </h3>
@@ -70,7 +73,7 @@ export function Highlight({
           </div>
 
           {/* Part 3 */}
-          <div className="lg:col-span-3 flex border border-yellow-700/50 hover:border-yellow-500 rounded-2xl bg-gray-900/50 overflow-hidden transition-all duration-200 ease-in-out hover:scale-103">
+          <div className="lg:col-span-3 flex bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content,border-box border border-transparent relative shadow-[0_0_5px_rgba(245,210,122,0.5)] hover:scale-[1.03] hover:shadow-[0_0_7px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)] rounded-2xl bg-gray-900/50 overflow-hidden transition-all duration-200 ease-in-out hover:scale-103">
             <div className="w-2/3 p-4 sm:p-6 lg:p-4">
               <h3 className="text-[#d4b075] font-bold text-lg sm:text-3xl lg:text-lg mb-1">
                 {item38.label}
@@ -96,7 +99,7 @@ export function Highlight({
           </div>
 
           {/* Part 4 */}
-          <div className="lg:col-span-3 border border-yellow-700/50 hover:border-yellow-500 p-4 sm:p-6 lg:p-4 rounded-2xl bg-gray-900/50 transition-all duration-200 ease-in-out hover:scale-103">
+          <div className="lg:col-span-3 bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content,border-box border border-transparent relative shadow-[0_0_5px_rgba(245,210,122,0.5)] hover:scale-[1.03] hover:shadow-[0_0_7px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)] p-4 sm:p-6 lg:p-4 rounded-2xl bg-gray-900/50 transition-all duration-200 ease-in-out hover:scale-103">
             <h3 className="text-[#d4b075] font-bold text-lg sm:text-3xl lg:text-lg mb-1">
               {item39.label}
             </h3>
