@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, Globe, MapPin, ArrowRight } from "lucide-react";
@@ -7,8 +9,27 @@ import {
   FaYoutube,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FooterData, FooterService } from "@/services/footer-service";
 
 export function Footer() {
+  const [footerData, setFooterData] = useState<FooterData | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await FooterService.getFooterConfig();
+        setFooterData(data);
+      } catch (error) {
+        console.error("Error while fetching Footer: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!footerData) return null;
+
   return (
     <footer className="bg-black text-gray-300 pt-8 border-t border-white/30">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-4 xl:gap-8">
@@ -16,17 +37,14 @@ export function Footer() {
         <div className="lg:col-span-3 space-y-4">
           <Link href="/" className="flex items-center">
             <Image
-              src="/navbar/Logo Junior CEO.png"
-              alt="LogoJuniorCEO"
+              src={footerData.item1.image}
+              alt="Logo"
               width={160}
               height={50}
               className="h-auto w-auto"
             />
           </Link>
-          <p className="text-sm leading-relaxed">
-            Kiến tạo thế hệ doanh nhân trẻ bản lĩnh, sáng tạo và có tầm ảnh
-            hưởng.
-          </p>
+          <p className="text-sm leading-relaxed">{footerData.item1.text}</p>
           <div className="flex gap-4 pt-2">
             {[FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn].map(
               (Icon, i) => (
@@ -44,58 +62,61 @@ export function Footer() {
 
         {/* Explore */}
         <div className="lg:col-span-2">
-          <h3 className="text-[#d4a76a] font-bold mb-6">KHÁM PHÁ</h3>
+          <h3 className="text-[#d4a76a] font-bold mb-6">
+            {footerData.item2.title}
+          </h3>
           <ul className="space-y-4 text-sm">
-            {["Trang chủ", "Chương trình", "Giảng viên", "Học phí", "FAQ"].map(
-              (item) => (
-                <li key={item}>
-                  <Link
-                    href="#"
-                    className="hover:text-[#d4a76a] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ),
-            )}
+            {footerData.item2.links.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.endpoint}
+                  className="hover:text-[#d4a76a] transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Information */}
         <div className="lg:col-span-2">
-          <h3 className="text-[#d4a76a] font-bold mb-6">THÔNG TIN</h3>
+          <h3 className="text-[#d4a76a] font-bold mb-6">
+            {footerData.item3.title}
+          </h3>
           <ul className="space-y-4 text-sm">
-            {["Về chúng tôi", "Điều khoản sử dụng", "Chính sách bảo mật"].map(
-              (item) => (
-                <li key={item}>
-                  <Link
-                    href="#"
-                    className="hover:text-[#d4a76a] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ),
-            )}
+            {footerData.item3.links.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.endpoint}
+                  className="hover:text-[#d4a76a] transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Contact */}
         <div className="lg:col-span-2 space-y-4 text-sm">
-          <h3 className="text-[#d4a76a] font-bold mb-6">LIÊN HỆ</h3>
+          <h3 className="text-[#d4a76a] font-bold mb-6">
+            {footerData.item4.title}
+          </h3>
           <div className="flex items-center gap-3">
-            <Phone size={16} className="shrink-0" /> 0815 66 55 58
+            <Phone size={16} className="shrink-0" />{" "}
+            {footerData.item4.phone_number}
           </div>
           <div className="flex items-center gap-3">
             <Mail size={18} className="shrink-0" />
-            <span className="break-all">lienhe.juniorceo@gmail.com</span>
+            <span className="break-all">{footerData.item4.email}</span>
           </div>
           <div className="flex items-center gap-3">
-            <Globe size={16} className="shrink-0" /> juniorceo.edu.vn
+            <Globe size={16} className="shrink-0" /> {footerData.item4.website}
           </div>
           <div className="flex items-start gap-3">
             <MapPin size={16} className="shrink-0 mt-0.5" />
-            123 Trương Định, phường Xuân Hòa, TPHCM
+            {footerData.item4.address}
           </div>
         </div>
 
