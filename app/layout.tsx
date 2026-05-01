@@ -9,9 +9,12 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "JUNIOR CEO",
+  title: "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp từ 11-17 tuổi",
   description:
-    "Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi Đào tạo Thế hệ Kế cận",
+    "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp từ 11-17 tuổi",
+  verification: {
+    google: "GK7vd_4hMmUcptGhlA-k5nb3Z3LYsAYfJf8JoRbLKOc",
+  },
 };
 
 export default function RootLayout({

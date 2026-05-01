@@ -11,10 +11,9 @@ import {
 import { getTrangChu } from "@/services/trang-chu-service";
 
 export const metadata: Metadata = {
-  title:
-    "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi - Đào tạo Thế hệ Kế cận",
+  title: "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp từ 11-17 tuổi",
   description:
-    "Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi - Đào tạo Thế hệ Kế cận",
+    "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp cho học viên từ 11-17 tuổi",
 };
 
 export default async function HomePage() {
