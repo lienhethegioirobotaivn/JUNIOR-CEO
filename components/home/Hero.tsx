@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkle } from "lucide-react";
 import { TrangChuData } from "@/services/trang-chu-service";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 
 type HeroProps = Pick<
   TrangChuData["pageBy"]["trangchu"],
@@ -33,6 +36,8 @@ export function Hero({
   item11,
   item12,
 }: HeroProps) {
+  const openDialog = useRegisterDialogStore((state) => state.openDialog);
+
   const Stats = [
     {
       icon: item5.icon,
@@ -107,11 +112,12 @@ export function Hero({
 
           {/* Actions buttons */}
           <div className="grid grid-cols-2 gap-3 lg:gap-4 h-11">
-            <Link href={item8.endpoint}>
-              <button className="flex justify-center w-full h-full font-semibold bg-linear-to-r from-[#d4b075] to-[#c59c5d] rounded-md text-black items-center gap-1 lg:gap-2 hover:opacity-90 whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer">
-                <p className="text-sm sm:text-lg">{item8.label}</p>
-              </button>
-            </Link>
+            <button
+              className="flex justify-center w-full h-full font-semibold bg-linear-to-r from-[#d4b075] to-[#c59c5d] rounded-md text-black items-center gap-1 lg:gap-2 hover:opacity-90 whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer"
+              onClick={openDialog}
+            >
+              <p className="text-sm sm:text-lg">{item8.label}</p>
+            </button>
             <Link href={item9.endpoint}>
               <button className="flex justify-center w-full h-full py-1 px-2 border border-[#3d3326] text-white/90 rounded-md hover:bg-white/10 transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer">
                 <div className="flex items-center justify-center gap-0 sm:gap-2 lg:gap-3 font-semibold">

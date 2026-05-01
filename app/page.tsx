@@ -1,14 +1,15 @@
 import { Metadata } from "next";
+import { getTrangChu } from "@/services/trang-chu-service";
 import {
+  Benefit,
+  ContactBanner,
   FeatureBar,
   Hero,
-  Benefit,
-  SevenModule,
-  Roadmap,
   Highlight,
-  ContactBanner,
+  Roadmap,
+  SevenModule,
 } from "@/components/home";
-import { getTrangChu } from "@/services/trang-chu-service";
+import { RegisterDialog } from "@/components/dialog/RegisterDialog";
 
 export const metadata: Metadata = {
   title: "JUNIOR CEO - Đào tạo CEO - Kinh doanh - Khởi nghiệp từ 11-17 tuổi",
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const { pageBy } = await getTrangChu();
-
   const data = pageBy.trangchu;
 
   return (
@@ -77,6 +77,9 @@ export default async function HomePage() {
         />
       </div>
       <ContactBanner item40={data.item40} item41={data.item41} />
+
+      {/* Dialog */}
+      <RegisterDialog />
     </div>
   );
 }

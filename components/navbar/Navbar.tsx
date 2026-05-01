@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { NavLinks } from "@/components/navbar/components";
 import { MobileMenu } from "@/components/navbar/components/MobileMenu";
 import { NavbarData, NavbarService } from "@/services/navbar-service";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 
 export const menuItems = [
   { name: "TRANG CHỦ", link: "/" },
@@ -19,6 +20,8 @@ export const menuItems = [
 ];
 
 export function Navbar() {
+  const openDialog = useRegisterDialogStore((state) => state.openDialog);
+
   const [isOpen, setIsOpen] = useState(false);
   const [navbarData, setNavbarData] = useState<NavbarData | null>(null);
 
@@ -65,11 +68,13 @@ export function Navbar() {
         {/* Action buttons */}
         {navbarData.navbar_right.map((item, index) => {
           return (
-            <Link key={index} href={item.endpoint}>
-              <button className="hidden md:flex bg-linear-to-r from-[#d4b075] to-[#c59c5d] px-4 py-2 rounded-md font-semibold text-black items-center gap-2 hover:opacity-90 text-xs md:text-sm whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer">
-                <p>{item.label}</p>
-              </button>
-            </Link>
+            <button
+              key={index}
+              className="hidden md:flex bg-linear-to-r from-[#d4b075] to-[#c59c5d] px-4 py-2 rounded-md font-semibold text-black items-center gap-2 hover:opacity-90 text-xs md:text-sm whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer"
+              onClick={openDialog}
+            >
+              <p>{item.label}</p>
+            </button>
           );
         })}
 

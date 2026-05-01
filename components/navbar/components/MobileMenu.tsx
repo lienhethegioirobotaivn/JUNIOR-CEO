@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { NavbarButtons, NavbarLink } from "@/services/navbar-service";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export function MobileMenu({
   buttons,
 }: MobileMenuProps) {
   const pathname = usePathname();
+  const openDialog = useRegisterDialogStore((state) => state.openDialog);
 
   useEffect(() => {
     setIsOpen(false);
@@ -48,15 +50,16 @@ export function MobileMenu({
 
       {buttons.map((item, index) => {
         return (
-          <Link
+          <button
             key={index}
-            href={item.endpoint}
-            onClick={() => setIsOpen(false)}
+            className="sm:hidden w-full bg-linear-to-r from-[#d4b075] to-[#c59c5d] px-4 py-2 mt-2 rounded-md font-semibold text-black flex items-center justify-center gap-2 hover:opacity-90 transition-opacity text-sm cursor-pointer"
+            onClick={() => {
+              openDialog();
+              setIsOpen(false);
+            }}
           >
-            <button className="w-full bg-linear-to-r from-[#d4b075] to-[#c59c5d] px-4 py-2 mt-2 rounded-md font-semibold text-black flex items-center justify-center gap-2 hover:opacity-90 transition-opacity text-sm cursor-pointer">
-              <p>{item.label}</p>
-            </button>
-          </Link>
+            <p>{item.label}</p>
+          </button>
         );
       })}
     </div>

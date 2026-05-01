@@ -1,4 +1,7 @@
+"use client";
+
 import { TrangChuData } from "@/services/trang-chu-service";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 import Link from "next/link";
 
 type ContactBannerProps = Pick<
@@ -7,6 +10,8 @@ type ContactBannerProps = Pick<
 >;
 
 export function ContactBanner({ item40, item41 }: ContactBannerProps) {
+  const openDialog = useRegisterDialogStore((state) => state.openDialog);
+
   return (
     <section className="flex flex-col lg:flex-row w-full overflow-hidden text-white">
       {/* Left side */}
@@ -23,11 +28,12 @@ export function ContactBanner({ item40, item41 }: ContactBannerProps) {
           </div>
 
           <div className="flex gap-4">
-            <Link href={item40.buttonLeft.endpoint}>
-              <button className="flex items-center gap-2 bg-linear-to-r from-[#c4985b] to-[#d9b47e] text-[#2b231a] transition-all duration-200 ease-in-out hover:scale-105 px-6 py-2 rounded font-bold cursor-pointer">
-                {item40.buttonLeft.text}
-              </button>
-            </Link>
+            <button
+              className="flex items-center gap-2 bg-linear-to-r from-[#c4985b] to-[#d9b47e] text-[#2b231a] transition-all duration-200 ease-in-out hover:scale-105 px-6 py-2 rounded font-bold cursor-pointer"
+              onClick={openDialog}
+            >
+              {item40.buttonLeft.text}
+            </button>
             <Link href={item40.buttonRight.endpoint}>
               <button className="flex items-center gap-2 border border-[#d4a76a] text-[#d4a76a] px-4 py-2 rounded font-bold transition-all duration-200 ease-in-out hover:scale-105 cursor-pointer">
                 {item40.buttonRight.text}
