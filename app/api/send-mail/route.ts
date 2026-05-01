@@ -7,9 +7,17 @@ export async function POST(req: Request) {
     const data = await req.json();
 
     const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL;
+    const SENDER_EMAIL = process.env.SENDER_EMAIL;
+
+    if (!RECEIVER_EMAIL) {
+      throw new Error("RECEIVER_EMAIL is missing in .env");
+    }
+    if (!SENDER_EMAIL) {
+      throw new Error("SENDER_EMAIL is missing in .env");
+    }
 
     await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: `${SENDER_EMAIL}`,
       to: `${RECEIVER_EMAIL}`,
       subject: "Đăng ký mới từ website JUNIOR CEO",
       html: `
