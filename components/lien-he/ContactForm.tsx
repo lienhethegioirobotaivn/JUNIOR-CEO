@@ -1,9 +1,12 @@
 "use client";
 
+import { LienHeData } from "@/services/lien-he-service";
 import { useToastStore } from "@/store/useToastStore";
 import { Phone, Mail, MapPin, Globe, Send, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+
+type ContactFormProps = Pick<LienHeData, "item_6" | "item_7">;
 
 const initialForm = {
   fullName: "",
@@ -13,7 +16,7 @@ const initialForm = {
   messageContent: "",
 };
 
-export function ContactForm() {
+export function ContactForm({ item_6, item_7 }: ContactFormProps) {
   const { showToast } = useToastStore();
 
   const [formData, setFormData] = useState(initialForm);
@@ -101,11 +104,10 @@ export function ContactForm() {
         {/* LEFT: CONTACT FORM */}
         <div className="lg:col-span-7 border border-white/10 rounded-2xl p-6 md:p-8 bg-[#0a0a0a]">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 tracking-wide uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent">
-            Gửi thông tin cho chúng tôi
+            {item_6.title}
           </h2>
           <p className="text-gray-400 text-center text-sm mb-8">
-            Điền thông tin vào biểu mẫu, chúng tôi sẽ liên hệ lại với bạn trong
-            thời gian sớm nhất.
+            {item_6.description}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -179,13 +181,7 @@ export function ContactForm() {
                   <option value="" className="bg-[#0a0a0a] text-white">
                     Chọn chủ đề quan tâm
                   </option>
-                  {[
-                    "Chủ đề 1",
-                    "Chủ đề 2",
-                    "Chủ đề 3",
-                    "Chủ đề 4",
-                    "Chủ đề 5",
-                  ].map((topic) => (
+                  {item_6.chu_de.map((topic) => (
                     <option
                       key={topic}
                       value={topic}
@@ -236,11 +232,9 @@ export function ContactForm() {
         {/* RIGHT: CONTACT INFO */}
         <div className="lg:col-span-5 border border-white/10 rounded-2xl p-6 md:p-8 bg-[#0a0a0a]">
           <h2 className="text-2xl font-bold mb-3 tracking-wide uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-transparent">
-            Thông tin liên hệ
+            {item_7.title}
           </h2>
-          <p className="text-gray-400 text-sm mb-8">
-            Kết nối với chúng tôi qua các kênh sau
-          </p>
+          <p className="text-gray-400 text-sm mb-8">{item_7.description}</p>
 
           <div className="space-y-8">
             {/* CONTACT ITEM */}
@@ -253,10 +247,10 @@ export function ContactForm() {
                   Hotline
                 </p>
                 <p className="text-white/80 font-medium text-lg">
-                  0394 783 239
+                  {item_7.hotline.content}
                 </p>
                 <p className="text-gray-500 text-xs">
-                  (8:00 - 20:00, Thứ 2 - Thứ 7)
+                  {item_7.hotline.description}
                 </p>
               </div>
             </div>
@@ -269,8 +263,12 @@ export function ContactForm() {
                 <p className="text-xs font-bold text-[#f3d9a9] uppercase">
                   Email
                 </p>
-                <p className="text-white/80 font-medium">lienhe.JC@gmail.com</p>
-                <p className="text-gray-500 text-xs">Phản hồi trong 24h</p>
+                <p className="text-white/80 font-medium">
+                  {item_7.email.content}
+                </p>
+                <p className="text-gray-500 text-xs">
+                  {item_7.email.description}
+                </p>
               </div>
             </div>
 
@@ -282,9 +280,7 @@ export function ContactForm() {
                 <p className="text-xs font-bold text-[#f3d9a9] uppercase">
                   Địa chỉ
                 </p>
-                <p className="text-white/80 font-medium">
-                  123 Trương Định, phường Xuân Hòa, TPHCM
-                </p>
+                <p className="text-white/80 font-medium">{item_7.address}</p>
               </div>
             </div>
 
@@ -296,7 +292,7 @@ export function ContactForm() {
                 <p className="text-xs font-bold text-[#f3d9a9] uppercase">
                   Website
                 </p>
-                <p className="text-white/80 font-medium">juniorceo.edu.vn</p>
+                <p className="text-white/80 font-medium">{item_7.website}</p>
               </div>
             </div>
           </div>
@@ -307,17 +303,33 @@ export function ContactForm() {
               Kết nối với chúng tôi
             </h3>
             <div className="flex gap-4">
-              {[FaFacebook, FaYoutube, FaInstagram, FaLinkedin].map(
-                (Icon, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 text-white hover:bg-[#e3a737] transition-all"
-                  >
-                    <Icon size={18} />
-                  </a>
-                ),
-              )}
+              {[
+                {
+                  icon: FaFacebook,
+                  link: item_7.social_media_links.link_facebook,
+                },
+                {
+                  icon: FaYoutube,
+                  link: item_7.social_media_links.link_youtube,
+                },
+                {
+                  icon: FaInstagram,
+                  link: item_7.social_media_links.link_instagram,
+                },
+                {
+                  icon: FaLinkedin,
+                  link: item_7.social_media_links.link_linkedin,
+                },
+              ].map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.link || "#"}
+                  target="_blank"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 text-white hover:bg-[#e3a737] transition-all"
+                >
+                  <item.icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
         </div>

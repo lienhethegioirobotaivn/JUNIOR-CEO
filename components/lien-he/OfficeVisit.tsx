@@ -1,32 +1,17 @@
+import { LienHeData } from "@/services/lien-he-service";
 import { CalendarCheck } from "lucide-react";
 import Image from "next/image";
 
-export function OfficeVisit() {
-  const features = [
-    {
-      icon: "X",
-      title: "Không gian hiện đại",
-      description: "Môi trường học tập truyền cảm hứng",
-    },
-    {
-      icon: "X",
-      title: "Tư vấn trực tiếp",
-      description: "Gặp gỡ chuyên gia, giải đáp thắc mắc",
-    },
-    {
-      icon: "X",
-      title: "Đặt lịch dễ dàng",
-      description: "Đặt lịch tham quan trước để được hỗ trợ tốt nhất",
-    },
-  ];
+type OfficeVisitProps = Pick<LienHeData, "item_8" | "item_9">;
 
+export function OfficeVisit({ item_8, item_9 }: OfficeVisitProps) {
   return (
     <section className="bg-black">
       <div className="mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* LEFT: INTERACTIVE MAP BOX */}
         <div className="relative lg:col-span-2 overflow-hidden rounded-2xl border border-white/10">
           <Image
-            src="/lien-he/Location.png"
+            src={item_8}
             alt="Location Image"
             fill
             className="object-cover object-center"
@@ -37,21 +22,24 @@ export function OfficeVisit() {
         <div className="lg:col-span-3 bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 flex flex-col justify-between">
           <div>
             <h2 className="text-2xl md:text-3xl mb-4 uppercase font-semibold bg-linear-to-b from-white via-[#c7ae7f] to-[#c19e59] bg-clip-text text-transparent">
-              Đến thăm văn phòng của chúng tôi
+              {item_9.title}
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
-              Chúng tôi luôn chào đón quý phụ huynh và học viên đến tham quan
-              không gian học tập, tìm hiểu chương trình và trao đổi trực tiếp
-              với đội ngũ của Junior CEO.
+              {item_9.description}
             </p>
 
             {/* FEATURES GRID */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
-              {features.map((item, index) => {
+              {item_9.visit_highlight.map((item, index) => {
                 return (
-                  <div key={index} className="grid grid-cols-3 gap-1">
-                    <div className="size-14 flex items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                      <p className="text-[#f3d9a9] text-5xl">{item.icon}</p>
+                  <div
+                    key={index}
+                    className={`grid grid-cols-3 items-center gap-1 lg:gap-2 ${index !== item_9.visit_highlight.length - 1 ? "lg:border-r lg:border-[#3d3326]" : ""}`}
+                  >
+                    <div className="flex items-center justify-center rounded-xl">
+                      <p className="text-[#f3d9a9] text-5xl lg:text-6xl">
+                        {item.icon}
+                      </p>
                     </div>
                     <div className="col-span-2 flex flex-col gap-1">
                       <h5 className="text-[#f3d9a9] text-sm font-bold uppercase tracking-wider">
