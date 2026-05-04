@@ -1,37 +1,27 @@
+import { HocPhiData } from "@/services/hoc-phi-service";
 import Image from "next/image";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 
-export function Hero() {
-  const Stats = [
-    {
-      icon: "🛡️",
-      text_1: "CHẤT LƯỢNG",
-      text_2: "xứng tầm đẳng cấp",
-    },
-    {
-      icon: "📈",
-      text_1: "GIÁ TRỊ",
-      text_2: "vượt xa chi phí",
-    },
-    {
-      icon: "🏅",
-      text_1: "ĐẦU TƯ CHO",
-      text_2: "tương lai dài hạn của con",
-    },
-    {
-      icon: "🎓",
-      text_1: "CỘNG ĐỒNG",
-      text_2: "tinh hoa & kết nối",
-    },
-  ];
+type HeroProps = Pick<
+  HocPhiData,
+  "item_1" | "item_2" | "item_3" | "item_4" | "item_5" | "item_6"
+>;
 
+export function Hero({
+  item_1,
+  item_2,
+  item_3,
+  item_4,
+  item_5,
+  item_6,
+}: HeroProps) {
   return (
     <section className="relative w-full lg:h-125 bg-black overflow-hidden flex items-center">
       {/* Background Image */}
       <div className="hidden lg:block absolute inset-0 z-0">
         <Image
-          src="/hoc-phi/HeroImg.png"
-          alt="Hero Background"
+          src={item_5}
+          alt="Hero Background Image"
           fill
           className="object-cover object-right"
           priority
@@ -45,24 +35,22 @@ export function Hero() {
             <div className="space-y-1 lg:w-[90%]">
               <div className="flex items-center gap-2">
                 <p className="text-[14px] md:text-base font-bold uppercase bg-linear-to-r from-[#efe2c8] via-[#c4aa79] to-[#e0b866] bg-clip-text text-transparent transition-all duration-200 ease-in-out hover:scale-102">
-                  HỌC PHÍ MINH BẠCH – GIÁ TRỊ VƯỢT TRỘI
+                  {item_1}
                 </p>
               </div>
 
               <h1 className="text-[44px] md:text-5xl font-bold leading-[1.1] py-2 bg-linear-to-b from-[#f3e7d3] to-[#967941] bg-clip-text text-transparent transition-all duration-200 ease-in-out hover:scale-102">
-                ĐẦU TƯ CHO TƯƠNG LAI DẪN ĐẦU
+                {item_2}
               </h1>
 
               <p className="text-gray-300 text-sm md:text-base transition-all duration-200 ease-in-out hover:scale-102">
-                Không chỉ là một khóa học, Junior CEO là một hành trình đầu tư
-                toàn diện cho tương lai của con – nơi mỗi bài học hôm nay là nền
-                tảng cho thành công vượt trội ngày mai.
+                {item_3}
               </p>
             </div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 lg:flex gap-6 lg:gap-4">
-              {Stats.map((item, index) => (
+              {item_4.advertise.map((item, index) => (
                 <div
                   key={index}
                   className="flex gap-2 group transition-all duration-200 ease-in-out hover:scale-103"
@@ -93,14 +81,12 @@ export function Hero() {
                 size={32}
               />
               <div className="ml-7">
-                <p className="text-gray-200 text-sm mb-2">
-                  Kiến thức là tài sản duy nhất không ai có thể lấy đi của bạn.
-                </p>
+                <p className="text-gray-200 text-sm mb-2">{item_6.content}</p>
               </div>
               <div className="flex items-center gap-2 justify-center">
                 <div className="h-px w-4 bg-[#c4aa79]" />
                 <span className="text-[#c4aa79] text-sm font-bold">
-                  Junior CEO
+                  {item_6.cre}
                 </span>
                 <div className="h-px w-4 bg-[#c4aa79]" />
               </div>

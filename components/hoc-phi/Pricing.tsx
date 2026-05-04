@@ -1,34 +1,8 @@
-export function Pricing() {
-  const pricingPlans = [
-    {
-      name: "STANDARD",
-      slogan: "KHỞI ĐẦU VỮNG CHẮC",
-      description:
-        "Dành cho học viên bắt đầu hành trình phát triển tư duy và kỹ năng doanh nhân.",
-      price: "75.000.000",
-      duration: "3 THÁNG",
-      isPopular: false,
-    },
-    {
-      name: "PREMIUM",
-      slogan: "BỨT PHÁ TOÀN DIỆN",
-      description:
-        "Chương trình toàn diện với trải nghiệm thực tế và sự đồng hành sát sao từ giảng viên.",
-      price: "129.000.000",
-      duration: "3 THÁNG",
-      isPopular: true,
-    },
-    {
-      name: "ELITE",
-      slogan: "DẪN ĐẦU XUẤT CHÚNG",
-      description:
-        "Trải nghiệm cao cấp nhất với lộ trình cá nhân hóa, mentor 1:1 và cơ hội đặc biệt.",
-      price: "199.000.000",
-      duration: "3 THÁNG",
-      isPopular: false,
-    },
-  ];
+import { HocPhiData } from "@/services/hoc-phi-service";
 
+type PricingProps = Pick<HocPhiData, "item_7">;
+
+export function Pricing({ item_7 }: PricingProps) {
   return (
     <section className="bg-black text-white pt-12">
       <div className="mx-auto">
@@ -37,19 +11,18 @@ export function Pricing() {
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="hidden lg:block h-px w-50 bg-linear-to-r from-transparent to-[#f3d9a9]" />
             <h2 className="text-3xl md:text-4xl font-bold tracking-widest uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent">
-              CÁC GÓI HỌC PHÍ
+              {item_7.title}
             </h2>
             <div className="hidden lg:block h-px w-50 bg-linear-to-l from-transparent to-[#f3d9a9]" />
           </div>
           <p className="text-gray-300 text-sm md:text-base">
-            Lựa chọn gói học phù hợp với mục tiêu và định hướng phát triển của
-            con
+            {item_7.description}
           </p>
         </div>
 
         {/* Pricing cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
-          {pricingPlans.map((plan, index) => (
+          {item_7.tuition_package.map((plan, index) => (
             <div
               key={index}
               className={`relative rounded-2xl p-8 border transition-all duration-300 flex flex-col items-center text-center ${
