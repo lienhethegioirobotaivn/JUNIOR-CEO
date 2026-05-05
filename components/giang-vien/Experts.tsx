@@ -1,61 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Cpu,
-  LineChart,
-  Megaphone,
-  ShoppingCart,
-  Factory,
-  Rocket,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { GiangVienData } from "@/services/giang-vien-service";
 
-export function Experts() {
-  const categories = [
-    { name: "CÔNG NGHỆ & AI", icon: <Cpu size={20} /> },
-    { name: "TÀI CHÍNH & ĐẦU TƯ", icon: <LineChart size={20} /> },
-    { name: "MARKETING & THƯƠNG HIỆU", icon: <Megaphone size={20} /> },
-    { name: "BÁN LẺ & ECOMMERCE", icon: <ShoppingCart size={20} /> },
-    { name: "SẢN XUẤT & VẬN HÀNH", icon: <Factory size={20} /> },
-    { name: "KHỞI NGHIỆP & GỌI VỐN", icon: <Rocket size={20} /> },
-  ];
+type ExpertsProps = Pick<GiangVienData, "item_7">;
 
-  const experts = [
-    {
-      image: "/giang-vien/InstructorImg.png",
-      name: "PHẠM THANH HƯNG",
-      role: "Founder & CEO",
-      company: "Base.vn",
-    },
-    {
-      image: "/giang-vien/InstructorImg.png",
-      name: "NGUYỄN HÒA BÌNH",
-      role: "Shark – Nhà đầu tư",
-      company: "NextTech Group",
-    },
-    {
-      image: "/giang-vien/InstructorImg.png",
-      name: "LÊ DIỆP KIỀU TRANG",
-      role: "CEO",
-      company: "Autobooks",
-    },
-    {
-      image: "/giang-vien/InstructorImg.png",
-      name: "TRẦN VĂN THẮNG",
-      role: "Founder",
-      company: "TOPICA",
-    },
-    {
-      image: "/giang-vien/InstructorImg.png",
-      name: "HOÀNG NAM TIẾN",
-      role: "Phó Chủ tịch FPT",
-      company: "(1969-2023)",
-    },
-  ];
-
+export function Experts({ item_7 }: ExpertsProps) {
   const [index, setIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(5);
 
@@ -70,7 +22,7 @@ export function Experts() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, experts.length - itemsPerView);
+  const maxIndex = Math.max(0, item_7.expert.length - itemsPerView);
 
   const prev = () => {
     setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
@@ -84,22 +36,19 @@ export function Experts() {
     <section className="py-8 mx-auto bg-[#0a0a0a] border border-transparent bg-clip-padding relative before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-[linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] before:content-[''] shadow-[0_0_5px_rgba(245,210,122,0.5)] rounded-xl">
       <div className="text-center mb-10">
         <h2 className="text-2xl md:text-3xl font-bold bg-linear-to-b from-[#f3e2c3] via-[#c7a96b] to-[#8a6b3f] bg-clip-text text-transparent uppercase tracking-wider mb-3">
-          MẠNG LƯỚI CHUYÊN GIA & DOANH NHÂN KHÁCH MỜI
+          {item_7.title}
         </h2>
-        <p className="text-gray-400 text-sm">
-          Học viên sẽ được giao lưu, học hỏi từ các doanh nhân thành công trong
-          nhiều lĩnh vực:
-        </p>
+        <p className="text-gray-400 text-sm">{item_7.sub_title}</p>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mx-4 lg:mx-12 border border-[#c7a96b]/30 rounded-xl py-3 px-4 lg:px-8 justify-between items-center gap-6 mb-8 bg-[#0b0b0b]">
-        {categories.map((c, i) => (
+        {item_7.category.map((c, i) => (
           <div key={i} className="flex items-center gap-3">
             <div className="p-2 border border-[#c7a96b]/50 rounded-full text-[#c7a96b] shrink-0">
               {c.icon}
             </div>
             <span className="text-[10px] lg:text-[13px] font-bold text-[#dfbe7a]">
-              {c.name}
+              {c.text}
             </span>
           </div>
         ))}
@@ -120,7 +69,7 @@ export function Experts() {
               transform: `translateX(-${index * (100 / itemsPerView)}%)`,
             }}
           >
-            {experts.map((e, i) => (
+            {item_7.expert.map((e, i) => (
               <div
                 key={i}
                 className="shrink-0 px-2"
@@ -163,7 +112,7 @@ export function Experts() {
       </div>
 
       <p className="text-center text-[10px] text-[#c7a96b] mt-12">
-        *Danh sách chuyên gia có thể thay đổi theo từng khóa học
+        {item_7.note}
       </p>
     </section>
   );
