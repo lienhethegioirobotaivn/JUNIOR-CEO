@@ -1,22 +1,16 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export function mrstranMiddleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
-  const url = request.nextUrl.clone();
+  const url = request.nextUrl;
 
-  const isSubdomain = hostname.startsWith("mrstran.");
-
-  if (isSubdomain) {
-    const allowedPath = "/landing";
-
+  if (hostname === "mrstran.juniorceo.edu.vn") {
     if (url.pathname === "/") {
-      url.pathname = allowedPath;
-      return NextResponse.redirect(url);
+      return NextResponse.redirect(new URL("/landing", request.url));
     }
 
-    if (url.pathname !== allowedPath) {
-      return new NextResponse("Not Found", { status: 404 });
+    if (!url.pathname.startsWith("/landing")) {
+      return NextResponse.redirect(new URL("/landing", request.url));
     }
   }
 
