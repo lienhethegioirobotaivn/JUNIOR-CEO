@@ -30,7 +30,7 @@ export function ContactSupport() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-[#f3d9a9] to-transparent opacity-50" />
 
         <div className="text-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-widest uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-transparent mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold pt-1 tracking-widest uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-transparent mb-4">
             VẪN CÒN THẮC MẮC?
           </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
