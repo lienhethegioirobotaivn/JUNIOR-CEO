@@ -23,6 +23,7 @@ export default async function HomePage() {
   return (
     <div className="text-white space-y-4 pt-14 mb-10">
       <Hero
+        type="default"
         item1={data.item1}
         item2={data.item2}
         item3={data.item3}

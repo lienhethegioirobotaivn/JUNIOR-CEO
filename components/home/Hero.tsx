@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Sparkle } from "lucide-react";
 import { TrangChuData } from "@/services/trang-chu-service";
 import { useLandingRegisterDialogStore } from "@/store/useLandingRegisterDialogStore";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 
-type HeroProps = Pick<
+type HeroProps = { type?: "default" | "landing" } & Pick<
   TrangChuData["pageBy"]["trangchu"],
   | "item1"
   | "item2"
@@ -23,6 +24,7 @@ type HeroProps = Pick<
 >;
 
 export function Hero({
+  type = "default",
   item1,
   item2,
   item3,
@@ -36,7 +38,12 @@ export function Hero({
   item11,
   item12,
 }: HeroProps) {
-  const openDialog = useLandingRegisterDialogStore((state) => state.openDialog);
+  const openDefault = useRegisterDialogStore((state) => state.openDialog);
+  const openLanding = useLandingRegisterDialogStore(
+    (state) => state.openDialog,
+  );
+
+  const handleOpen = type === "landing" ? openLanding : openDefault;
 
   const Stats = [
     {
@@ -114,7 +121,7 @@ export function Hero({
           <div className="grid grid-cols-2 gap-3 lg:gap-4 h-11">
             <button
               className="flex justify-center w-full h-full font-semibold bg-linear-to-r from-[#d4b075] to-[#c59c5d] rounded-md text-black items-center gap-1 lg:gap-2 hover:opacity-90 whitespace-nowrap transition-all duration-200 ease-in-out hover:scale-102 cursor-pointer"
-              onClick={openDialog}
+              onClick={handleOpen}
             >
               <p className="text-sm sm:text-lg">{item8.label}</p>
             </button>

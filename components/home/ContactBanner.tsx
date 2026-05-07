@@ -2,15 +2,25 @@
 
 import { TrangChuData } from "@/services/trang-chu-service";
 import { useLandingRegisterDialogStore } from "@/store/useLandingRegisterDialogStore";
+import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
 import Link from "next/link";
 
-type ContactBannerProps = Pick<
+type ContactBannerProps = { type?: "default" | "landing" } & Pick<
   TrangChuData["pageBy"]["trangchu"],
   "item40" | "item41"
 >;
 
-export function ContactBanner({ item40, item41 }: ContactBannerProps) {
-  const openDialog = useLandingRegisterDialogStore((state) => state.openDialog);
+export function ContactBanner({
+  type = "default",
+  item40,
+  item41,
+}: ContactBannerProps) {
+  const openDefault = useRegisterDialogStore((state) => state.openDialog);
+  const openLanding = useLandingRegisterDialogStore(
+    (state) => state.openDialog,
+  );
+
+  const handleOpen = type === "landing" ? openLanding : openDefault;
 
   return (
     <section className="flex flex-col lg:flex-row w-full overflow-hidden text-white">
@@ -30,7 +40,7 @@ export function ContactBanner({ item40, item41 }: ContactBannerProps) {
           <div className="flex gap-4">
             <button
               className="flex items-center gap-2 bg-linear-to-r from-[#c4985b] to-[#d9b47e] text-[#2b231a] transition-all duration-200 ease-in-out hover:scale-105 px-6 py-2 rounded font-bold cursor-pointer"
-              onClick={openDialog}
+              onClick={handleOpen}
             >
               {item40.buttonLeft.text}
             </button>
