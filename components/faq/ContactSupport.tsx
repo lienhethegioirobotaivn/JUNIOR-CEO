@@ -1,29 +1,10 @@
 "use client";
 
-import { Headset, MessageSquareMore, Mail } from "lucide-react";
+import { FAQData } from "@/services/faq-service";
 
-const CONTACT_METHODS = [
-  {
-    icon: Headset,
-    title: "TƯ VẤN TRỰC TIẾP",
-    desc: "Nói chuyện với chuyên viên tư vấn",
-    actionText: "GỌI NGAY: 0394 783 239",
-  },
-  {
-    icon: MessageSquareMore,
-    title: "CHAT TRỰC TUYẾN",
-    desc: "Chat với chúng tôi 24/7",
-    actionText: "BẮT ĐẦU CHAT",
-  },
-  {
-    icon: Mail,
-    title: "GỬI EMAIL",
-    desc: "Nhận phản hồi trong 24h",
-    actionText: "lienhe.JC@gmail.com",
-  },
-];
+type ContactSupportProps = Pick<FAQData, "item_8">;
 
-export function ContactSupport() {
+export function ContactSupport({ item_8 }: ContactSupportProps) {
   return (
     <section className="bg-black py-12">
       <div className="mx-auto border border-[#f3d9a9]/20 rounded-2xl p-4 md:p-6 bg-linear-to-b from-[#111] to-black relative overflow-hidden">
@@ -31,37 +12,76 @@ export function ContactSupport() {
 
         <div className="text-center mb-6">
           <h2 className="text-2xl md:text-3xl font-bold pt-1 tracking-widest uppercase bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-transparent mb-4">
-            VẪN CÒN THẮC MẮC?
+            {item_8.title}
           </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Đội ngũ tư vấn của Junior CEO luôn sẵn sàng giải đáp mọi câu hỏi của
-            bạn và giúp bạn hiểu rõ hơn về chương trình.
+            {item_8.description}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {CONTACT_METHODS.map((item, index) => (
-            <div
-              key={index}
-              className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <item.icon className="w-8 h-8 text-[#f3d9a9] shrink-0" />
-                <div className="text-left">
-                  <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 text-[11px] uppercase tracking-tight">
-                    {item.desc}
-                  </p>
-                </div>
+          {/* Direct */}
+          <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
+            <div className="flex items-center gap-4 mb-6">
+              <p className="text-2xl text-[#f3d9a9] shrink-0">
+                {item_8.contact_method.direct.icon}
+              </p>
+              <div className="text-left">
+                <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
+                  {item_8.contact_method.direct.title}
+                </h3>
+                <p className="text-gray-400 text-[11px] uppercase tracking-tight">
+                  {item_8.contact_method.direct.description}
+                </p>
               </div>
-
-              <button className="w-full py-3 px-4 rounded-lg bg-linear-to-b from-[#f3d9a9] to-[#a67c37] text-black text-xs md:text-sm font-bold transition-transform duration-300 active:scale-95 hover:brightness-110 cursor-pointer">
-                {item.actionText}
-              </button>
             </div>
-          ))}
+
+            <button className="w-full py-3 px-4 rounded-lg bg-linear-to-b from-[#f3d9a9] to-[#a67c37] text-black text-xs md:text-sm font-bold transition-transform duration-300 active:scale-95 hover:brightness-110 cursor-pointer">
+              {item_8.contact_method.direct.button_text}
+            </button>
+          </div>
+
+          {/* Online */}
+          <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
+            <div className="flex items-center gap-4 mb-6">
+              <p className="text-2xl text-[#f3d9a9] shrink-0">
+                {item_8.contact_method.online.icon}
+              </p>
+              <div className="text-left">
+                <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
+                  {item_8.contact_method.online.title}
+                </h3>
+                <p className="text-gray-400 text-[11px] uppercase tracking-tight">
+                  {item_8.contact_method.online.description}
+                </p>
+              </div>
+            </div>
+
+            <button className="w-full py-3 px-4 rounded-lg bg-linear-to-b from-[#f3d9a9] to-[#a67c37] text-black text-xs md:text-sm font-bold transition-transform duration-300 active:scale-95 hover:brightness-110 cursor-pointer">
+              {item_8.contact_method.online.button_text}
+            </button>
+          </div>
+
+          {/* Email */}
+          <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
+            <div className="flex items-center gap-4 mb-6">
+              <p className="text-2xl text-[#f3d9a9] shrink-0">
+                {item_8.contact_method.email.icon}
+              </p>
+              <div className="text-left">
+                <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
+                  {item_8.contact_method.email.title}
+                </h3>
+                <p className="text-gray-400 text-[11px] uppercase tracking-tight">
+                  {item_8.contact_method.email.description}
+                </p>
+              </div>
+            </div>
+
+            <button className="w-full py-3 px-4 rounded-lg bg-linear-to-b from-[#f3d9a9] to-[#a67c37] text-black text-xs md:text-sm font-bold transition-transform duration-300 active:scale-95 hover:brightness-110 cursor-pointer">
+              {item_8.contact_method.email.button_text}
+            </button>
+          </div>
         </div>
       </div>
     </section>
