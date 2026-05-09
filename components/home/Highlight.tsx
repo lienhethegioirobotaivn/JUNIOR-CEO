@@ -88,13 +88,15 @@ export function Highlight({
               />
             </div>
             <div className="w-1/3 pr-1 pb-1 relative">
-              <Image
-                src={item38.image.node.sourceUrl}
-                alt={item38.image.node.altText}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 33vw, 15vw"
-              />
+              <Link href={"/chung-nhan"}>
+                <Image
+                  src={item38.image.node.sourceUrl}
+                  alt={item38.image.node.altText}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 33vw, 15vw"
+                />
+              </Link>
             </div>
           </div>
 
