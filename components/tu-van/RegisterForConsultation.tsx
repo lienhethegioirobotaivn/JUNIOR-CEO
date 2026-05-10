@@ -7,18 +7,18 @@ import {
   Mail,
   ChevronLeft,
   ChevronRight,
-  Video,
-  Headphones,
-  UserRound,
   Lock,
   ArrowRight,
 } from "lucide-react";
+import { TuVanData } from "@/services/tu-van-service";
+
+type RegisterForConsultationProps = Pick<TuVanData, "item_7" | "item_8">;
 
 const COURSES = ["Mini MBA", "CEO Toàn Diện", "Lãnh Đạo Kế Thừa", "Khác"];
 
 const DATES = [
   { day: "Thứ 2", date: "24/06" },
-  { day: "Thứ 3", date: "25/06", active: true },
+  { day: "Thứ 3", date: "25/06" },
   { day: "Thứ 4", date: "26/06" },
   { day: "Thứ 5", date: "27/06" },
   { day: "Thứ 6", date: "28/06" },
@@ -32,28 +32,10 @@ const TIME_SLOTS = {
   evening: ["19:00", "20:00", "20:30"],
 };
 
-const CONSULT_METHODS = [
-  {
-    id: "direct",
-    label: "TRỰC TIẾP",
-    sub: "Tại văn phòng Junior CEO",
-    icon: UserRound,
-  },
-  {
-    id: "zoom",
-    label: "ONLINE QUA ZOOM",
-    sub: "Tư vấn trực tuyến qua Zoom",
-    icon: Video,
-  },
-  {
-    id: "phone",
-    label: "ĐIỆN THOẠI",
-    sub: "Trao đổi nhanh qua điện thoại",
-    icon: Headphones,
-  },
-];
-
-export function RegisterForConsultation() {
+export function RegisterForConsultation({
+  item_7,
+  item_8,
+}: RegisterForConsultationProps) {
   const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(5);
@@ -94,12 +76,9 @@ export function RegisterForConsultation() {
           {/* Left */}
           <div className="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[#C29555]/20">
             <h2 className="text-3xl font-bold bg-linear-to-br from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent mb-2 uppercase">
-              Đăng ký nhận tư vấn 1:1
+              {item_7.title}
             </h2>
-            <p className="text-white/75 text-sm mb-8">
-              Điền thông tin bên dưới, chuyên gia của chúng tôi sẽ liên hệ để
-              sắp xếp buổi tư vấn phù hợp nhất cho bạn.
-            </p>
+            <p className="text-white/75 text-sm mb-8">{item_7.description}</p>
 
             <form className="space-y-5">
               <div className="space-y-4">
@@ -248,11 +227,10 @@ export function RegisterForConsultation() {
           {/* Right */}
           <div className="p-8 md:p-12 bg-[#0A0A0A]/50">
             <h2 className="text-3xl font-bold bg-linear-to-bl from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent mb-2 uppercase text-center lg:text-left">
-              Chọn thời gian tư vấn phù hợp
+              {item_8.title}
             </h2>
             <p className="text-white/75 text-sm mb-8 text-center lg:text-left">
-              Chọn khung giờ bạn mong muốn, chúng tôi sẽ xác nhận lại qua điện
-              thoại.
+              {item_8.description}
             </p>
 
             <div className="relative flex items-center gap-2 mb-8">
@@ -328,24 +306,25 @@ export function RegisterForConsultation() {
 
             <div className="mt-12 p-6 border border-[#C29555]/20 rounded-xl bg-linear-to-b from-[#111] to-[#050505]">
               <h3 className="text-center text-2xl font-bold bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent mb-6 uppercase">
-                Hình thức tư vấn linh hoạt
+                {item_8.consult_method.title}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {CONSULT_METHODS.map((method) => {
-                  const Icon = method.icon;
+                {item_8.consult_method.methods.map((method, index) => {
                   return (
                     <button
-                      key={method.id}
+                      key={index}
                       type="button"
                       className="flex flex-col items-center text-center group"
                     >
                       <div className="p-3 rounded-full mb-4 transition-all bg-gray-900 text-[#f3d9a9]">
-                        <Icon size={24} />
+                        <p className="text-2xl">{method.icon}</p>
                       </div>
                       <p className="text-sm font-bold mb-1 text-[#f3d9a9]">
                         {method.label}
                       </p>
-                      <p className="text-xs text-gray-300">{method.sub}</p>
+                      <p className="text-xs text-gray-300">
+                        {method.sub_label}
+                      </p>
                     </button>
                   );
                 })}
