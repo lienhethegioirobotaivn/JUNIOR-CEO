@@ -22,7 +22,11 @@ export function Experts({ item_7 }: ExpertsProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, item_7.expert.length - itemsPerView);
+  const filteredExperts = item_7.expert.filter(
+    (e) => e.name && e.name.trim() !== "",
+  );
+
+  const maxIndex = Math.max(0, filteredExperts.length - itemsPerView);
 
   const prev = () => {
     setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
@@ -77,7 +81,7 @@ export function Experts({ item_7 }: ExpertsProps) {
               transform: `translateX(-${index * (100 / itemsPerView)}%)`,
             }}
           >
-            {item_7.expert.map((e, i) => (
+            {filteredExperts.map((e, i) => (
               <div
                 key={i}
                 className="shrink-0 px-2"
