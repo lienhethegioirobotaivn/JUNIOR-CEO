@@ -1,50 +1,26 @@
 import { TrangChuData } from "@/services/trang-chu-service";
+import Image from "next/image";
 
-type FeatureBarProps = Pick<
-  TrangChuData["pageBy"]["trangchu"],
-  "item13" | "item14" | "item15" | "item16"
->;
+type FeatureBarProps = Pick<TrangChuData, "item_10">;
 
-export function FeatureBar({
-  item13,
-  item14,
-  item15,
-  item16,
-}: FeatureBarProps) {
-  const features = [
-    {
-      icon: item13.icon,
-      title: item13.text1,
-      description: item13.text2,
-    },
-    {
-      icon: item14.icon,
-      title: item14.text1,
-      description: item14.text2,
-    },
-    {
-      icon: item15.icon,
-      title: item15.text1,
-      description: item15.text2,
-    },
-    {
-      icon: item16.icon,
-      title: item16.text1,
-      description: item16.text2,
-    },
-  ];
-
+export function FeatureBar({ item_10 }: FeatureBarProps) {
   return (
     <div className="bg-[#0a0a0a] border border-transparent bg-clip-padding relative before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-[linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] before:content-[''] shadow-[0_0_5px_rgba(245,210,122,0.5)] rounded-2xl py-6 grid grid-cols-1 lg:grid-cols-4 justify-center items-center w-full mx-auto gap-3">
-      {features.map((item, index) => {
+      {item_10.features.map((item, index) => {
         return (
           <div
             key={index}
-            className={`flex items-center gap-4 px-6 transition-all duration-200 ease-in-out hover:scale-103 ${index !== features.length - 1 ? "border-r border-[#3d3326]" : ""} flex-1 min-w-62.5`}
+            className={`flex items-center gap-4 lg:gap-2 px-6 transition-all duration-200 ease-in-out hover:scale-103 ${index !== item_10.features.length - 1 ? "border-r border-[#3d3326]" : ""} flex-1 min-w-62.5`}
           >
             <div className="text-[#d4b075]">
-              <div className="w-full h-full">
-                <p className="text-4xl">{item.icon}</p>
+              <div className="shrink-0 w-12 h-12 lg:size-16 flex items-center justify-center">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
               </div>
             </div>
             <div className="flex flex-col">

@@ -1,45 +1,31 @@
 import { TrangChuData } from "@/services/trang-chu-service";
+import Image from "next/image";
 
-type RoadmapProps = Pick<
-  TrangChuData["pageBy"]["trangchu"],
-  "item31" | "item32" | "item33" | "item34"
->;
+type RoadmapProps = Pick<TrangChuData, "item_13">;
 
-export function Roadmap({ item31, item32, item33, item34 }: RoadmapProps) {
-  const roadmapData = [
-    {
-      icon: item32.icon,
-      title: item32.label,
-      tasks: item32.text,
-    },
-    {
-      icon: item33.icon,
-      title: item33.label,
-      tasks: item33.text,
-    },
-    {
-      icon: item34.icon,
-      title: item34.label,
-      tasks: item34.text,
-    },
-  ];
-
+export function Roadmap({ item_13 }: RoadmapProps) {
   return (
     <section className="pt-6 sm:mt-5">
       <div className="mx-auto">
         <h2 className="text-white/90 text-center text-2xl sm:text-3xl font-semibold uppercase">
-          {item31}
+          {item_13.title}
         </h2>
 
         <div className="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-2 lg:gap-4">
-          {roadmapData.map((item, index) => (
+          {item_13.roadmap.map((item, index) => (
             <div
               key={index}
               className="bg-[linear-gradient(#0a0a0a,#0a0a0a) linear-gradient(135deg,#A67C00,#F5D27A,#D4AF37)] bg-clip-content border border-transparent relative rounded-2xl p-3 grid grid-cols-12 gap-1 shadow-[0_0_5px_rgba(245,210,122,0.5)] transition-all duration-200 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_5px_rgba(245,210,122,0.8)] hover:bg-[linear-gradient(#0a0a0a,#0a0a0a) linear-gradient(135deg,#FFD98F,#F0C36A,#D4A14E)]"
             >
-              <div className="col-span-4 text-yellow-400 flex items-center justify-center">
-                <div className="flex items-center justify-center w-25 h-25 bg-yellow-500/10 p-4 sm:p-3 lg:p-5 rounded-full">
-                  <p className="text-5xl">{item.icon}</p>
+              <div className="col-span-4 flex justify-center">
+                <div className="shrink-0 size-full lg:size-24">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
               </div>
 
@@ -48,10 +34,9 @@ export function Roadmap({ item31, item32, item33, item34 }: RoadmapProps) {
                   {item.title}
                 </h3>
 
-                <div
-                  className="text-white/80 space-y-12"
-                  dangerouslySetInnerHTML={{ __html: item.tasks }}
-                />
+                <div className="text-white/80 space-y-12 whitespace-pre-wrap">
+                  <p>{item.content}</p>
+                </div>
               </div>
             </div>
           ))}

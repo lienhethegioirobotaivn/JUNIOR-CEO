@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getTrangChu } from "@/services/trang-chu-service";
+import { TrangChuService } from "@/services/trang-chu-service";
 import {
   Benefit,
   ContactBanner,
@@ -17,74 +17,36 @@ export const metadata: Metadata = {
 };
 
 export default async function Landing() {
-  const { pageBy } = await getTrangChu();
-  const data = pageBy.trangchu;
+  const data = await TrangChuService.getData();
+  if (!data) return null;
 
   return (
     <div id="landing" className="text-white space-y-4 pt-14 mb-10">
       <Hero
         type="landing"
-        item1={data.item1}
-        item2={data.item2}
-        item3={data.item3}
-        item4={data.item4}
-        item5={data.item5}
-        item6={data.item6}
-        item7={data.item7}
-        item8={data.item8}
-        item9={data.item9}
-        item10={data.item10}
-        item11={data.item11}
-        item12={data.item12}
+        item_1={data.item_1}
+        item_2={data.item_2}
+        item_3={data.item_3}
+        item_4={data.item_4}
+        item_5={data.item_5}
+        item_6={data.item_6}
+        item_7={data.item_7}
+        item_8={data.item_8}
+        item_9={data.item_9}
       />
       <div className="px-8 space-y-8">
-        <FeatureBar
-          item13={data.item13}
-          item14={data.item14}
-          item15={data.item15}
-          item16={data.item16}
-        />
+        <FeatureBar item_10={data.item_10} />
         <section id="chuong-trinh">
-          <Benefit
-            item17={data.item17}
-            item18={data.item18}
-            item19={data.item19}
-            item20={data.item20}
-            item21={data.item21}
-            item22={data.item22}
-          />
-          <SevenModule
-            item23={data.item23}
-            item24={data.item24}
-            item25={data.item25}
-            item26={data.item26}
-            item27={data.item27}
-            item28={data.item28}
-            item29={data.item29}
-            item30={data.item30}
-          />
+          <Benefit item_11={data.item_11} />
+          <SevenModule item_12={data.item_12} />
         </section>
-        <section>
-          <Roadmap
-            item31={data.item31}
-            item32={data.item32}
-            item33={data.item33}
-            item34={data.item34}
-          />
-        </section>
+        <Roadmap item_13={data.item_13} />
         <section id="giang-vien">
-          <Highlight
-            type="landing"
-            item35={data.item35}
-            item36={data.item36}
-            item37={data.item37}
-            item38={data.item38}
-            item39={data.item39}
-          />
+          <Highlight type="landing" item_14={data.item_14} />
         </section>
       </div>
       <section id="hoc-phi">
-        <ContactBanner item40={data.item40} item41={data.item41} />
+        <ContactBanner item_15={data.item_15} />
       </section>
     </div>
   );

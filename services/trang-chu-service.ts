@@ -1,514 +1,169 @@
-import { fetchGraphQL } from "@/lib/graphql-client";
+import { getACFDataBySlug } from "@/lib/wp-rest-api";
+
+interface FeatureIconText1Text2 {
+  icon: string;
+  text_1: string;
+  text_2: string;
+}
+
+interface Button {
+  text: string;
+  endpoint: string;
+}
+
+interface FeatureIconTitleDescription {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Module {
+  icon: string;
+  text: string;
+}
+
+interface Roadmap {
+  icon: string;
+  title: string;
+  content: string;
+}
+
+interface Teacher {
+  image: string;
+  name: string;
+  role: string;
+}
 
 export interface TrangChuData {
-  pageBy: {
+  item_1: string;
+  item_2: string;
+  item_3: string;
+  item_4: string;
+  item_5: {
+    features: FeatureIconText1Text2[];
+  };
+  item_6: {
+    buttons: {
+      button_1: Button;
+      button_2: Button;
+    };
+  };
+  item_7: {
+    image: string;
+    text: string;
+  };
+  item_8: string;
+  item_9: string;
+  item_10: {
+    features: FeatureIconTitleDescription[];
+  };
+  item_11: {
     title: string;
-    trangchu: {
-      item1: string;
-      item2: string;
-      item3: string;
-      item4: string;
-      item5: {
-        icon: string;
-        text1: string;
-        text2: string;
+    features: FeatureIconTitleDescription[];
+    image: string;
+  };
+  item_12: {
+    title: string;
+    modules: Module[];
+  };
+  item_13: {
+    title: string;
+    roadmap: Roadmap[];
+  };
+  item_14: {
+    title: {
+      text_left: string;
+      button_middle: Button;
+      text_right: string;
+    };
+    column_1: {
+      image: string;
+      title: string;
+      sub_title: string;
+      content: string;
+    };
+    column_2: {
+      title: string;
+      sub_title: string;
+      content: string;
+    };
+    column_3: {
+      image: string;
+      title: string;
+      sub_title: string;
+      content: string;
+    };
+    column_4: {
+      title: string;
+      sub_title: string;
+      teachers: Teacher[];
+    };
+  };
+  item_15: {
+    left: {
+      background_image: string;
+      text_1: string;
+      text_2: string;
+      buttons: {
+        button_1: Button;
+        button_2: Button;
       };
-      item6: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item7: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item8: {
-        label: string;
-        endpoint: string;
-      };
-      item9: {
-        label: string;
-        endpoint: string;
-      };
-      item10: {
-        image: {
-          node: {
-            sourceUrl: string;
-            altText: string;
-          };
-        };
-        text: string;
-      };
-      item11: {
-        node: {
-          sourceUrl: string;
-          altText: string;
-        };
-      };
-      item12: {
-        node: {
-          sourceUrl: string;
-          altText: string;
-        };
-      };
-      item13: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item14: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item15: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item16: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item17: string;
-      item18: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item19: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item20: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item21: {
-        icon: string;
-        text1: string;
-        text2: string;
-      };
-      item22: {
-        node: {
-          sourceUrl: string;
-          altText: string;
-        };
-      };
-      item23: string;
-      item24: {
+    };
+    right: {
+      background_image: string;
+      phone: {
         icon: string;
         text: string;
       };
-      item25: {
+      website: {
         icon: string;
         text: string;
       };
-      item26: {
+      zalo: {
         icon: string;
         text: string;
-      };
-      item27: {
-        icon: string;
-        text: string;
-      };
-      item28: {
-        icon: string;
-        text: string;
-      };
-      item29: {
-        icon: string;
-        text: string;
-      };
-      item30: {
-        icon: string;
-        text: string;
-      };
-      item31: string;
-      item32: {
-        icon: string;
-        label: string;
-        text: string;
-      };
-      item33: {
-        icon: string;
-        label: string;
-        text: string;
-      };
-      item34: {
-        icon: string;
-        label: string;
-        text: string;
-      };
-      item35: {
-        textLeft: string;
-        textMiddle: string;
-        textRight: string;
-      };
-      item36: {
-        image: {
-          node: {
-            sourceUrl: string;
-            altText: string;
-          };
-        };
-        label: string;
-        subLabel: string;
-        text: string;
-      };
-      item37: {
-        label: string;
-        subLabel: string;
-        text: string;
-      };
-      item38: {
-        image: {
-          node: {
-            sourceUrl: string;
-            altText: string;
-          };
-        };
-        label: string;
-        subLabel: string;
-        text: string;
-      };
-      item39: {
-        label: string;
-        subLabel: string;
-        people: {
-          person1: {
-            avatar: {
-              node: {
-                sourceUrl: string;
-                altText: string;
-              };
-            };
-            name: string;
-            role: string;
-          };
-          person2: {
-            avatar: {
-              node: {
-                sourceUrl: string;
-                altText: string;
-              };
-            };
-            name: string;
-            role: string;
-          };
-          person3: {
-            avatar: {
-              node: {
-                sourceUrl: string;
-                altText: string;
-              };
-            };
-            name: string;
-            role: string;
-          };
-        };
-      };
-      item40: {
-        image: {
-          node: {
-            sourceUrl: string;
-            altText: string;
-          };
-        };
-        label: string;
-        subLabel: string;
-        buttonLeft: {
-          text: string;
-          endpoint: string;
-        };
-        buttonRight: {
-          text: string;
-          endpoint: string;
-        };
-      };
-      item41: {
-        image: {
-          node: {
-            sourceUrl: string;
-            altText: string;
-          };
-        };
-        content1: {
-          icon: string;
-          text: string;
-        };
-        content2: {
-          icon: string;
-          text: string;
-        };
-        content3: {
-          icon: string;
-          text: string;
-        };
       };
     };
   };
 }
 
-export async function getTrangChu(): Promise<TrangChuData> {
-  const query = `
-    query {
-      pageBy(uri: "trang-chu") {
-        title
-        trangchu {
-          item1
-          item2
-          item3
-          item4
-          item5{
-            icon
-            text1
-            text2
-          }
-          item6{
-            icon
-            text1
-            text2
-          }
-          item7{
-            icon
-            text1
-            text2
-          }
-          item8{
-            label
-            endpoint
-          }
-          item9{
-            label
-            endpoint
-          }
-          item10 {
-            image {
-              node{
-                sourceUrl
-                altText
-              }
-            }
-            text
-          }
-          item11 {
-            node{
-              sourceUrl
-              altText
-            }
-          }
-          item12 {
-            node{
-              sourceUrl
-              altText
-            }
-          }
-          item13 {
-            icon
-            text1
-            text2
-          }
-          item14 {
-            icon
-            text1
-            text2
-          }
-          item15 {
-            icon
-            text1
-            text2
-          }
-          item16 {
-            icon
-            text1
-            text2
-          }
-          item17
-          item18 {
-            icon
-            text1
-            text2
-          }
-          item19 {
-            icon
-            text1
-            text2
-          }
-          item20 {
-            icon
-            text1
-            text2
-          }
-          item21 {
-            icon
-            text1
-            text2
-          }
-          item22 {
-            node{
-              sourceUrl
-              altText
-            }
-          }
-          item23
-          item24{
-            icon
-            text
-          }
-          item25{
-            icon
-            text
-          }
-          item26{
-            icon
-            text
-          }
-          item27{
-            icon
-            text
-          }
-          item28{
-            icon
-            text
-          }
-          item29{
-            icon
-            text
-          }
-          item30{
-            icon
-            text
-          }
-          item31
-          item32{
-            icon
-            label
-            text
-          }
-          item33{
-            icon
-            label
-            text
-          }
-          item34{
-            icon
-            label
-            text
-          }
-          item35{
-            textLeft
-            textMiddle
-            textRight
-          }
-          item36{
-            image{
-              node{
-                sourceUrl
-                altText
-              }
-            }
-            label
-            subLabel
-            text
-          }
-          item37{
-            label
-            subLabel
-            text
-          }
-          item38{
-            image{
-              node{
-                sourceUrl
-                altText
-              }
-            }
-            label
-            subLabel
-            text
-          }
-          item39{
-            label
-            subLabel
-            people {
-              person1{
-                avatar{
-                  node{
-                    sourceUrl
-                    altText
-                  }
-                }
-                name
-                role
-              }
-              person2{
-                avatar{
-                  node{
-                    sourceUrl
-                    altText
-                  }
-                }
-                name
-                role
-              }
-              person3{
-                avatar{
-                  node{
-                    sourceUrl
-                    altText
-                  }
-                }
-                name
-                role
-              }
-            }
-          }
-          item40 {
-            image{
-              node{
-                sourceUrl
-                altText
-              }
-            }
-            label
-            subLabel
-            buttonLeft{
-              text
-              endpoint
-            }
-            buttonRight{
-              text
-              endpoint
-            }
-          }
-          item41 {
-            image{
-              node{
-                sourceUrl
-                altText
-              }
-            }
-            content1 {
-              icon
-              text
-            }
-            content2 {
-              icon
-              text
-            }
-            content3 {
-              icon
-              text
-            }
-          }
-        }
-      }
-    }
-  `;
-  return await fetchGraphQL<TrangChuData>(query);
-}
+const SLUG = "trang-chu";
+
+export const TrangChuService = {
+  async getData(): Promise<TrangChuData | null> {
+    const data = await getACFDataBySlug<TrangChuData>(SLUG);
+
+    if (!data) return null;
+
+    return {
+      ...data,
+      item_5: {
+        ...data.item_5,
+        features: Object.values(data.item_5?.features || {}),
+      },
+      item_10: {
+        ...data.item_10,
+        features: Object.values(data.item_10?.features || {}),
+      },
+      item_11: {
+        ...data.item_11,
+        features: Object.values(data.item_11?.features || {}),
+      },
+      item_12: {
+        ...data.item_12,
+        modules: Object.values(data.item_12?.modules || {}),
+      },
+      item_13: {
+        ...data.item_13,
+        roadmap: Object.values(data.item_13?.roadmap || {}),
+      },
+      item_14: {
+        ...data.item_14,
+        column_4: {
+          ...data.item_14.column_4,
+          teachers: Object.values(data.item_14?.column_4.teachers || {}),
+        },
+      },
+    };
+  },
+};
