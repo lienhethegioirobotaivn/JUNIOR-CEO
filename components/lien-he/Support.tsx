@@ -2,6 +2,7 @@
 
 import { LienHeData } from "@/services/lien-he-service";
 import { useRegisterDialogStore } from "@/store/useRegisterDialogStore";
+import Image from "next/image";
 
 type SupportProps = Pick<LienHeData, "item_10" | "item_11">;
 
@@ -23,9 +24,15 @@ export function Support({ item_10, item_11 }: SupportProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {item_10.faq.map((faq, index) => (
               <div key={index} className="space-y-1 group">
-                <div className="flex items-center gap-0">
-                  <div className="flex items-center justify-center rounded-lg p-2">
-                    <p className="text-3xl text-[#f3d9a9]">{faq.icon}</p>
+                <div className="flex items-center gap-1">
+                  <div className="shrink-0 size-14 lg:size-14 flex items-center justify-center p-2 rounded-lg">
+                    <Image
+                      src={faq.icon}
+                      alt={faq.question}
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
                   </div>
                   <h4 className="text-[#f3d9a9] text-base font-semibold">
                     {faq.question}
@@ -40,8 +47,14 @@ export function Support({ item_10, item_11 }: SupportProps) {
         {/* RIGHT: CTA SECTION */}
         <div className="lg:col-span-4 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 flex items-center justify-center overflow-hidden">
           <div className="grid grid-cols-4 py-4 gap-0">
-            <div className="flex justify-center">
-              <p className="text-[#f3d9a9] text-7xl">{item_11.icon}</p>
+            <div className="shrink-0 size-18 lg:size-24 flex justify-center">
+              <Image
+                src={item_11.icon}
+                alt="Icon"
+                width={56}
+                height={56}
+                className="object-contain w-full h-full"
+              />
             </div>
 
             <div className="col-span-3">

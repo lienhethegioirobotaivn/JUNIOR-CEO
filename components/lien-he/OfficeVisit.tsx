@@ -36,10 +36,14 @@ export function OfficeVisit({ item_8, item_9 }: OfficeVisitProps) {
                     key={index}
                     className={`grid grid-cols-3 items-center gap-1 lg:gap-2 ${index !== item_9.visit_highlight.length - 1 ? "lg:border-r lg:border-[#3d3326]" : ""}`}
                   >
-                    <div className="flex items-center justify-center rounded-xl">
-                      <p className="text-[#f3d9a9] text-5xl lg:text-6xl">
-                        {item.icon}
-                      </p>
+                    <div className="shrink-0 size-18 lg:size-16 flex items-center justify-center rounded-xl">
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        width={56}
+                        height={56}
+                        className="object-contain w-full h-full"
+                      />
                     </div>
                     <div className="col-span-2 flex flex-col gap-1">
                       <h5 className="text-[#f3d9a9] text-sm font-bold uppercase tracking-wider">

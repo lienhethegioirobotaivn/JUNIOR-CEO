@@ -31,8 +31,14 @@ export function Hero({ item_1, item_2, item_3, item_4, item_5 }: HeroProps) {
                 key={i}
                 className="flex flex-col items-center text-center border border-[#c5a059]/40 rounded-xl px-2 py-2.5 bg-linear-to-b from-[#1a1a1a] to-black hover:border-[#c5a059] transition-all duration-200 ease-in-out hover:scale-104"
               >
-                <div className="mb-3">
-                  <p className="text-3xl text-[#e6d3a3]">{item.icon}</p>
+                <div className="mb-2 shrink-0 w-12 h-12 lg:size-16 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <h3 className="text-xs font-semibold text-[#e6d3a3]">
                   {item.title}
