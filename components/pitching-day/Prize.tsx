@@ -24,8 +24,14 @@ export function Prize({ item_11 }: PrizeProps) {
                   key={index}
                   className="group flex flex-col items-center text-center p-6 rounded-2xl border border-[#d4b075]/20 bg-black/40 transition-all duration-300 hover:border-[#d4b075]/60 hover:scale-104"
                 >
-                  <div className="text-4xl md:text-5xl mb-6 drop-shadow-[0_0_12px_rgba(212,176,117,0.4)] transition-transform group-hover:scale-110">
-                    {item.icon}
+                  <div className="shrink-0 w-12 h-12 lg:size-18 flex items-center justify-center mb-4 drop-shadow-[0_0_12px_rgba(212,176,117,0.4)] transition-transform group-hover:scale-110">
+                    <Image
+                      src={item.icon}
+                      alt={item.rank}
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
                   </div>
                   <h3 className="text-[10px] md:text-[11px] font-bold text-[#f3d9a9] mb-2">
                     {item.rank}

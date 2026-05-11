@@ -1,4 +1,5 @@
 import { PitchingDayData } from "@/services/pitching-day-service";
+import Image from "next/image";
 
 type AboutProps = Pick<PitchingDayData, "item_8">;
 
@@ -23,7 +24,15 @@ export function About({ item_8 }: AboutProps) {
               key={index}
               className="group relative bg-[#0a0a0a] border border-white/15 hover:border-white/35 rounded-xl px-4 py-4 flex flex-col items-center text-center transition-all duration-200 ease-in-out hover:scale-102"
             >
-              <div className="text-4xl mb-4">{item.icon}</div>
+              <div className="mb-2 shrink-0 w-12 h-12 lg:size-16 flex items-center justify-center">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
 
               <h3 className="bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-transparent text-sm md:text-base font-bold mb-2 uppercase">
                 {item.title}

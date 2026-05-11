@@ -22,9 +22,17 @@ export function PitchingInfo({ item_9, item_10 }: PitchingInfoProps) {
                   key={index}
                   className="relative z-10 flex flex-col items-center text-center flex-1 group transition-transform duration-300 hover:scale-105"
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black border border-[#d4b075]/50 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(212,176,117,0.2)] mb-3 group-hover:border-[#d4b075] transition-colors">
+                  <div className="size-18 md:w-20 md:h-20 rounded-full bg-black border border-[#d4b075]/50 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(212,176,117,0.2)] mb-3 group-hover:border-[#d4b075] transition-colors">
                     <span className="drop-shadow-[0_0_8px_rgba(212,176,117,0.5)]">
-                      {step.icon}
+                      <div className="shrink-0 w-12 h-12 lg:size-14 flex items-center justify-center">
+                        <Image
+                          src={step.icon}
+                          alt={step.title}
+                          width={56}
+                          height={56}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
                     </span>
                   </div>
                   <span className="text-[#f3d9a9] font-bold text-xl mb-3">

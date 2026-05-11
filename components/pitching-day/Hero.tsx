@@ -49,14 +49,22 @@ export function Hero({
           {item_4}
         </p>
 
-        <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7">
+        <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-7">
           {item_5.features.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center transition-all duration-200 ease-in-out hover:scale-103"
+              className="flex flex-col items-center text-center transition-all duration-200 ease-in-out hover:scale-103 px-2 lg:px-0"
             >
               <div className="mb-3 text-[34px] drop-shadow-[0_0_14px_rgba(227,168,84,0.45)] sm:text-[38px]">
-                {item.icon}
+                <div className="shrink-0 size-16 lg:size-16 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               </div>
 
               <h3 className="text-[10px] font-bold leading-[1.7] tracking-[0.08em] text-[#f3d9a9] sm:text-[11px]">
