@@ -23,9 +23,15 @@ export function Hero({ item_1, item_2, item_3, item_4, item_5 }: HeroProps) {
 
           <div className="flex flex-col gap-6 mt-6">
             {item_4.features.map((item, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <div className="shrink-0 mt-1">
-                  <p className="text-2xl text-[#e6d3a3]">{item.icon}</p>
+              <div key={i} className="flex items-start gap-4 lg:gap-2">
+                <div className="mt-1 shrink-0 w-12 h-12 lg:size-11 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-[#e6d3a3] uppercase tracking-wide">

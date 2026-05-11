@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { TuVanData } from "@/services/tu-van-service";
+import Image from "next/image";
 
 type RegisterForConsultationProps = Pick<TuVanData, "item_7" | "item_8">;
 
@@ -316,8 +317,14 @@ export function RegisterForConsultation({
                       type="button"
                       className="flex flex-col items-center text-center group"
                     >
-                      <div className="p-3 rounded-full mb-4 transition-all bg-gray-900 text-[#f3d9a9]">
-                        <p className="text-2xl">{method.icon}</p>
+                      <div className="mb-2 shrink-0 size-14 lg:size-16 flex items-center justify-center">
+                        <Image
+                          src={method.icon}
+                          alt={method.label}
+                          width={56}
+                          height={56}
+                          className="object-contain w-full h-full"
+                        />
                       </div>
                       <p className="text-sm font-bold mb-1 text-[#f3d9a9]">
                         {method.label}

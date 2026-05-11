@@ -1,4 +1,5 @@
 import { TuVanData } from "@/services/tu-van-service";
+import Image from "next/image";
 
 type ContactSupportProps = Pick<TuVanData, "item_9">;
 
@@ -21,9 +22,15 @@ export function ContactSupport({ item_9 }: ContactSupportProps) {
           {/* Phone */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-4 md:p-6 flex items-center justify-center group">
             <div className="flex items-center gap-3 md:gap-4 w-full">
-              <p className="text-3xl md:text-4xl text-[#f3d9a9] shrink-0">
-                {item_9.phone.icon}
-              </p>
+              <div className="shrink-0 size-10 lg:size-16 flex items-center justify-center">
+                <Image
+                  src={item_9.phone.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left min-w-0">
                 <h3 className="text-[#f3d9a9] text-base md:text-lg font-bold tracking-wider truncate">
                   {item_9.phone.text_1}
@@ -38,9 +45,15 @@ export function ContactSupport({ item_9 }: ContactSupportProps) {
           {/* Email */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-4 md:p-6 flex items-center justify-center group">
             <div className="flex items-center gap-3 md:gap-4 w-full">
-              <p className="text-3xl md:text-4xl text-[#f3d9a9] shrink-0">
-                {item_9.email.icon}
-              </p>
+              <div className="shrink-0 size-10 lg:size-16 flex items-center justify-center">
+                <Image
+                  src={item_9.email.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left min-w-0">
                 <h3 className="text-[#f3d9a9] text-base md:text-lg font-bold tracking-wider truncate">
                   {item_9.email.text_1}
@@ -55,9 +68,15 @@ export function ContactSupport({ item_9 }: ContactSupportProps) {
           {/* Chat */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-4 md:p-6 flex items-center justify-center group">
             <div className="flex items-center gap-3 md:gap-4 w-full">
-              <p className="text-3xl md:text-4xl text-[#f3d9a9] shrink-0">
-                {item_9.chat.icon}
-              </p>
+              <div className="shrink-0 size-10 lg:size-16 flex items-center justify-center">
+                <Image
+                  src={item_9.chat.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left min-w-0">
                 <h3 className="text-[#f3d9a9] text-base md:text-lg font-bold tracking-wider truncate">
                   {item_9.chat.text_1}
