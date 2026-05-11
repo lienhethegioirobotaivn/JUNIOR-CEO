@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Plus, Minus, Inbox } from "lucide-react";
 import { FAQData } from "@/services/faq-service";
+import Image from "next/image";
 
 type FAQComponentProps = Pick<FAQData, "item_7">;
 
@@ -42,23 +43,31 @@ export function FAQComponent({ item_7 }: FAQComponentProps) {
                 setActiveTab(index);
                 setOpenId(0);
               }}
-              className={`flex flex-col md:flex-row items-center justify-center gap-3 p-4 rounded-xl border transition-all duration-300 group cursor-pointer ${
+              className={`flex flex-col md:flex-row items-center justify-center gap-3 lg:gap-1 p-4 rounded-xl border transition-all duration-300 group cursor-pointer ${
                 activeTab === index
                   ? "border-[#f3d9a9] bg-linear-to-b from-[#f3d9a9]/20 to-transparent shadow-[0_0_20px_rgba(243,217,169,0.15)]"
                   : "border-white/10 bg-[#111] hover:border-[#f3d9a9]/50"
               }`}
             >
-              <p
+              <div
                 className={`text-xl lg:text-[28px] shrink-0 transition-colors ${
                   activeTab === index
                     ? "text-[#f3d9a9]"
                     : "text-white/40 group-hover:text-[#f3d9a9]/70"
                 }`}
               >
-                {item.category.icon}
-              </p>
+                <div className="shrink-0 w-12 h-12 lg:size-10 flex items-center justify-center">
+                  <Image
+                    src={item.category.icon}
+                    alt={item.category.text}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              </div>
               <span
-                className={`text-[10px] md:text-xs font-bold leading-tight uppercase transition-colors ${
+                className={`text-xs lg:text-sm font-bold uppercase transition-colors ${
                   activeTab === index
                     ? "text-[#f3d9a9]"
                     : "text-white/40 group-hover:text-[#f3d9a9]/70"

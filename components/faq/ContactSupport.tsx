@@ -1,6 +1,7 @@
 "use client";
 
 import { FAQData } from "@/services/faq-service";
+import Image from "next/image";
 
 type ContactSupportProps = Pick<FAQData, "item_8">;
 
@@ -23,9 +24,15 @@ export function ContactSupport({ item_8 }: ContactSupportProps) {
           {/* Direct */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
             <div className="flex items-center gap-4 mb-6">
-              <p className="text-2xl text-[#f3d9a9] shrink-0">
-                {item_8.contact_method.direct.icon}
-              </p>
+              <div className="shrink-0 w-12 h-12 lg:size-14 flex items-center justify-center">
+                <Image
+                  src={item_8.contact_method.direct.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left">
                 <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
                   {item_8.contact_method.direct.title}
@@ -44,9 +51,15 @@ export function ContactSupport({ item_8 }: ContactSupportProps) {
           {/* Online */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
             <div className="flex items-center gap-4 mb-6">
-              <p className="text-2xl text-[#f3d9a9] shrink-0">
-                {item_8.contact_method.online.icon}
-              </p>
+              <div className="shrink-0 w-12 h-12 lg:size-14 flex items-center justify-center">
+                <Image
+                  src={item_8.contact_method.online.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left">
                 <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
                   {item_8.contact_method.online.title}
@@ -65,9 +78,15 @@ export function ContactSupport({ item_8 }: ContactSupportProps) {
           {/* Email */}
           <div className="bg-black/40 border border-white/5 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-[#f3d9a9]/30 group">
             <div className="flex items-center gap-4 mb-6">
-              <p className="text-2xl text-[#f3d9a9] shrink-0">
-                {item_8.contact_method.email.icon}
-              </p>
+              <div className="shrink-0 w-12 h-12 lg:size-14 flex items-center justify-center">
+                <Image
+                  src={item_8.contact_method.email.icon}
+                  alt="Icon"
+                  width={56}
+                  height={56}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="text-left">
                 <h3 className="text-[#f3d9a9] text-sm font-bold tracking-wider">
                   {item_8.contact_method.email.title}
