@@ -25,10 +25,16 @@ export function ProgramOverview({
             {item_8.modules.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 bg-linear-to-r from-[#1a1a1a] to-transparent lg:px-4 py-2 rounded-lg border border-yellow-900/10"
+                className="flex items-center gap-4 bg-linear-to-r from-[#1a1a1a] to-transparent lg:px-4 p-2 rounded-lg border border-yellow-900/10"
               >
-                <div className="flex items-center justify-center text-xl w-8 shrink-0">
-                  {item.icon}
+                <div className="shrink-0 size-8 lg:size-10 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
 
                 <span className="bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent text-base font-bold w-6 shrink-0">
@@ -72,9 +78,15 @@ export function ProgramOverview({
           </p>
           <div className="space-y-10">
             {item_10.recognitions.map((item, index) => (
-              <div key={index} className="flex gap-2 items-center">
-                <div className="shrink-0 w-16 h-16 rounded-full bg-[#111] flex items-center justify-center text-3xl border border-yellow-900/30 shadow-[0_0_20px_-5px_rgba(212,175,55,0.2)]">
-                  {item.icon}
+              <div key={index} className="flex gap-1 items-center">
+                <div className="shrink-0 size-16 lg:size-18 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div className="space-y-1">
                   <h4 className="bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent font-bold text-base tracking-tight uppercase">

@@ -58,9 +58,17 @@ export function Hero({
             {item_5.benefit.map((item, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col items-center text-center p-2 lg:px-4 lg:py-3 rounded-2xl bg-white/5 border-2 border-white/20 hover:border-white/30 transition-all duration-200 ease-in-out hover:scale-104"
+                className="group flex flex-col items-center text-center p-2 lg:px-4 lg:py-3 rounded-2xl bg-[#111] border-2 border-white/20 hover:border-white/30 transition-all duration-200 ease-in-out hover:scale-104"
               >
-                <span className="text-3xl lg:text-4xl mb-3">{item.icon}</span>
+                <div className="mb-3 shrink-0 w-12 h-12 lg:size-16 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
                 <h4 className="text-[#f0ca85] text-[11px] lg:text-[14px] font-bold uppercase mb-2 leading-tight">
                   {item.title}
                 </h4>
