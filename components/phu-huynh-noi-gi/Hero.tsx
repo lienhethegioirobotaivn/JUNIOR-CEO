@@ -57,8 +57,16 @@ export function Hero({ item_1, item_2, item_3, item_4, item_5 }: HeroProps) {
                 className={`flex items-center gap-5 px-4 transition-transform duration-300 hover:scale-105 
                   ${index !== item_5.stats.length - 1 ? "lg:border-r lg:border-white/20" : ""}`}
               >
-                <div className="shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-3xl">
-                  {item.icon}
+                <div className="shrink-0 w-12 h-12 lg:size-14 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-3xl">
+                  <div className="shrink-0 size-10 lg:size-11 flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt="Icon"
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <h3 className="bg-linear-to-b from-[#f3e7d3] to-[#967941] bg-clip-text text-transparent font-bold text-2xl tracking-wide">
