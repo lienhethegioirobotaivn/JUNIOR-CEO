@@ -56,8 +56,16 @@ export function Hero({
                   className="flex gap-2 group transition-all duration-200 ease-in-out hover:scale-103"
                 >
                   <div className="size-fit p-1.5 shrink-0 flex items-center justify-center rounded-lg border border-white/25 bg-linear-to-br from-black to-[#1a1a1a] shadow-[0_0_15px_rgba(150,121,65,0.1)] transition-all duration-300 group-hover:border-white/40">
-                    <span className="text-4xl text-[#c4aa79] drop-shadow-[0_0_8px_rgba(196,170,121,0.5)]">
-                      {item.icon}
+                    <span className="text-[#c4aa79] drop-shadow-[0_0_8px_rgba(196,170,121,0.5)]">
+                      <div className="shrink-0 size-10 lg:size-10 flex items-center justify-center">
+                        <Image
+                          src={item.icon}
+                          alt="Icon"
+                          width={56}
+                          height={56}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
                     </span>
                   </div>
                   <div className="flex flex-col">

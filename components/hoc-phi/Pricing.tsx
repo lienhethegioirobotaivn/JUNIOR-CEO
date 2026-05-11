@@ -26,12 +26,12 @@ export function Pricing({ item_7 }: PricingProps) {
             <div
               key={index}
               className={`relative rounded-2xl p-8 border transition-all duration-300 flex flex-col items-center text-center ${
-                plan.isPopular
+                plan.ispopular
                   ? "border-[#f3d9a9] bg-black shadow-[0_0_20px_rgba(212,175,55,0.2)] scale-103 z-10"
                   : "border-zinc-800 bg-[#0a0a0a]"
               }`}
             >
-              {plan.isPopular && (
+              {plan.ispopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-linear-to-b from-[#f3d9a9] to-[#a67c37] text-black text-xs font-bold py-1 px-6 rounded-full whitespace-nowrap">
                   PHỔ BIẾN NHẤT
                 </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { HocPhiData } from "@/services/hoc-phi-service";
+import Image from "next/image";
 
 type InfoProps = Pick<HocPhiData, "item_9" | "item_10">;
 
@@ -51,9 +52,17 @@ export function Info({ item_9, item_10 }: InfoProps) {
           </h2>
           <div className="space-y-10">
             {item_10.result.map((item, idx) => (
-              <div key={idx} className="flex gap-6 items-start group">
-                <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl border border-[#f3d9a9]/30 bg-[#1a1a1a] flex items-center justify-center shadow-[inset_0_0_10px_rgba(243,217,169,0.1)] transition-transform group-hover:scale-110">
-                  <p className="text-4xl">{item.icon}</p>
+              <div key={idx} className="flex gap-3 lg:gap-6 items-start group">
+                <div className="shrink-0 size-14 md:w-14 md:h-14 rounded-xl border border-[#f3d9a9]/30 bg-[#1a1a1a] flex items-center justify-center shadow-[inset_0_0_10px_rgba(243,217,169,0.1)] transition-transform group-hover:scale-110">
+                  <div className="shrink-0 w-12 h-12 lg:size-11 flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
                 </div>
                 <div>
                   <h3 className="text-[#f3d9a9] font-bold tracking-wider mb-1 text-sm md:text-base">

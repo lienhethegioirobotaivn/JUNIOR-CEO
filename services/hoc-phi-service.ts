@@ -12,7 +12,7 @@ interface TuitionPackage {
   description: string;
   price: string;
   duration: string;
-  isPopular: boolean;
+  ispopular: boolean;
 }
 
 interface Comparision {

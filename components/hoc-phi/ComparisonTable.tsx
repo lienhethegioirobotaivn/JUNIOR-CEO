@@ -1,5 +1,6 @@
 import { HocPhiData } from "@/services/hoc-phi-service";
 import { Check, X } from "lucide-react";
+import Image from "next/image";
 
 type ComparisonTableProps = Pick<HocPhiData, "item_8">;
 
@@ -53,8 +54,16 @@ export function ComparisonTable({ item_8 }: ComparisonTableProps) {
                   className="border border-white/25 hover:bg-white/5 transition-colors"
                 >
                   <td className="px-4 py-2 flex items-center gap-4 text-zinc-300 text-sm lg:text-base">
-                    <span className="text-[#f3d9a9] text-xl opacity-80">
-                      {item.quyen_loi.icon}
+                    <span className="text-[#f3d9a9]">
+                      <div className="shrink-0 size-8 lg:size-12 flex items-center justify-center">
+                        <Image
+                          src={item.quyen_loi.icon}
+                          alt={item.quyen_loi.text}
+                          width={56}
+                          height={56}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
                     </span>
                     {item.quyen_loi.text}
                   </td>
