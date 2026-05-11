@@ -1,6 +1,7 @@
 "use client";
 
 import { ChuongTrinhData } from "@/services/chuong-trinh-service";
+import Image from "next/image";
 
 type CurriculumTableProps = Pick<ChuongTrinhData, "item_10" | "item_11">;
 
@@ -71,9 +72,15 @@ export function CurriculumTable({ item_10, item_11 }: CurriculumTableProps) {
 
           <div className="space-y-10">
             {item_11.map((item, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="w-[20%] size-12 lg:size-14 p-2 flex items-center justify-center rounded-full bg-[#11161c] border border-[#2a2a2a] text-[#c7ae7f]">
-                  <p className="text-3xl lg:text-5xl">{item.icon}</p>
+              <div key={index} className="flex gap-2">
+                <div className="shrink-0 size-16 lg:size-18 flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div>
                   <p className="text-[#f5e1bb] text-lg font-medium">

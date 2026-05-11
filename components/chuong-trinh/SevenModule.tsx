@@ -1,4 +1,5 @@
 import { ChuongTrinhData } from "@/services/chuong-trinh-service";
+import Image from "next/image";
 
 type SevenModuleProps = Pick<ChuongTrinhData, "item_8">;
 
@@ -19,8 +20,16 @@ export function SevenModule({ item_8 }: SevenModuleProps) {
                 key={index}
                 className="flex flex-col items-center text-center group transition-all duration-200 ease-in-out hover:scale-104"
               >
-                <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#d4b075] flex items-center justify-center text-[#d4b075] mb-6 transition-all duration-300 group-hover:bg-[#d4b075] group-hover:text-black">
-                  <p className="text-[clamp(1rem,5vw,2rem)]">{item.icon}</p>
+                <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#d4b075] flex items-center justify-center text-[#d4b075] mb-6 transition-all duration-300">
+                  <div className="shrink-0 w-12 h-12 lg:size-16 flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt="Icon"
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
 
                   <span className="absolute -bottom-4 bg-black px-2 text-[#d4b075] font-bold text-lg">
                     {displayId}

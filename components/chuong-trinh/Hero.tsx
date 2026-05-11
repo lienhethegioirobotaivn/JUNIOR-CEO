@@ -1,4 +1,5 @@
 import { ChuongTrinhData } from "@/services/chuong-trinh-service";
+import Image from "next/image";
 
 type HeroProps = Pick<
   ChuongTrinhData,
@@ -50,8 +51,14 @@ export function Hero({
                   key={index}
                   className="w-fit flex items-center justify-center bg-[#1a1a1a] border border-[#3d3326] gap-2 lg:gap-3 p-2 lg:p-2 px-2 lg:px-5 rounded-xl transition-all duration-200 ease-in-out hover:scale-105"
                 >
-                  <div className="text-[#e6c891]">
-                    <p className="text-2xl">{item.icon}</p>
+                  <div className="text-[#e6c891] shrink-0 size-6 lg:size-12 flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt="Icon"
+                      width={56}
+                      height={56}
+                      className="object-contain w-full h-full"
+                    />
                   </div>
                   <div className="flex flex-col justify-center">
                     <p className="text-[11px] sm:text-lg lg:text-sm font-semibold text-[#e6c891]">
