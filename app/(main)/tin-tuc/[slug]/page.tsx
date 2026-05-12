@@ -3,9 +3,32 @@ import Link from "next/link";
 import { getBlog, getBlogs } from "@/lib/wp-rest-api";
 import { notFound } from "next/navigation";
 import { CornerUpLeft } from "lucide-react";
+import { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlog(slug);
+
+  if (!blog) {
+    return {
+      title: "404 Not found",
+    };
+  }
+
+  return {
+    title: blog.title.rendered,
+    description: blog.title.rendered || blog.acf?.description,
+    openGraph: {
+      images: [blog.acf?.image || ""],
+    },
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
 }
 
 export default async function BlogDetail({ params }: Props) {
