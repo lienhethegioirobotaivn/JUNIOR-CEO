@@ -1,30 +1,47 @@
 import { MetadataRoute } from "next";
+import { getBlogs } from "@/lib/wp-rest-api";
+
+const STATIC_ROUTES = [
+  "/",
+  "/chuong-trinh",
+  "/giang-vien",
+  "/hoc-phi",
+  "/phu-huynh-noi-gi",
+  "/faq",
+  "/lien-he",
+  "/chung-nhan",
+  "/pitching-day",
+  "/tu-van",
+  "/tin-tuc",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseURL = process.env.BASEURL!;
+  const baseURL = process.env.BASEURL;
+  if (!baseURL) {
+    throw new Error("BASEURL variable is missing in .env");
+  }
 
-  const routes = [""];
-  const staticPages = routes.map((route) => ({
+  const staticPages = STATIC_ROUTES.map((route) => ({
     url: `${baseURL}${route}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: route === "" ? 1 : 0.8,
+    changeFrequency: "daily" as const,
+    priority: route === "/" ? 1 : 0.8,
   }));
 
-  /*
-  const dummyPosts = [
-    { id: "1", slug: "khoa-hoc-ceo-nhi", updatedAt: "2024-03-20" },
-    { id: "2", slug: "kinh-doanh-tu-tuoi-14", updatedAt: "2024-03-21" },
-  ];
+  let dynamicPages: MetadataRoute.Sitemap = [];
 
-  const dynamicPages = dummyPosts.map((post) => ({
-    url: `${baseURL}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-  */
+  try {
+    const blogs = await getBlogs();
 
-  return staticPages;
-  //return [...staticPages, ...dynamicPages];
+    dynamicPages = blogs.map((blog) => ({
+      url: `${baseURL}/tin-tuc/${blog.slug}`,
+      lastModified: blog.modified ? new Date(blog.modified) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }));
+  } catch (error) {
+    console.error("Error while creating dynamic sitemap", error);
+  }
+
+  return [...staticPages, ...dynamicPages];
 }

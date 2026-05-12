@@ -1,5 +1,6 @@
 export interface Blog {
   id: number;
+  modified: string;
   slug: string;
 
   title: {
