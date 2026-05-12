@@ -21,12 +21,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: blog.title.rendered,
-    description: blog.title.rendered || blog.acf?.description,
-    openGraph: {
-      images: [blog.acf?.image || ""],
+
+    description: blog.acf.description,
+
+    alternates: {
+      canonical: `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
     },
-    icons: {
-      icon: "/favicon.ico",
+
+    openGraph: {
+      title: blog.title.rendered,
+      description: blog.acf.description,
+      url: `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
+      images: [
+        {
+          url: blog.acf.image,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title.rendered,
+      description: blog.acf.description,
+      images: [blog.acf.image],
     },
   };
 }
@@ -62,8 +79,29 @@ export default async function BlogDetail({ params }: Props) {
     .sort((a, b) => b.matchedCount - a.matchedCount)
     .slice(0, 4);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: blog.title.rendered,
+    image: [blog.acf.image],
+    datePublished: blog.date,
+    dateModified: blog.modified,
+    description: blog.acf.description,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
+    },
+  };
+
   return (
     <main className="bg-[#050505] mt-4 py-20 px-6 lg:px-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <Link href={"/tin-tuc"}>
         <div className="flex gap-2 border border-white/20 bg-white/5 w-fit mb-6 px-4 py-2 rounded-full transition-all duration-200 hover:scale-102">
           <CornerUpLeft className="text-[#e8c579]" />
