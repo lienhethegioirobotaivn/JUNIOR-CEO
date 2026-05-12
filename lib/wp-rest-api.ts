@@ -1,3 +1,5 @@
+import { Blog } from "@/types/wordpress";
+
 interface WordPressPage<T> {
   id: number;
   slug: string;
@@ -31,4 +33,39 @@ export async function getACFDataBySlug<T>(slug: string): Promise<T | null> {
     console.error(`WordPress API Error (${slug}):`, error);
     return null;
   }
+}
+
+export async function getBlogs(): Promise<Blog[]> {
+  try {
+    const res = await fetch(`${REST_URL}/blog`, {
+      next: {
+        revalidate: 60,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch blogs");
+    }
+
+    const data = await res.json();
+
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error(error);
+
+    return [];
+  }
+}
+
+export async function getBlog(params: string): Promise<Blog | null> {
+  const slug = await params;
+
+  const res = await fetch(`${REST_URL}/blog?slug=${slug}`);
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  const blog = Array.isArray(data) ? data[0] : data;
+
+  return blog;
 }
