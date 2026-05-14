@@ -48,11 +48,11 @@ export function FeaturedStudents({ item_11 }: FeaturedStudentsProps) {
                   <h3 className="text-base md:text-lg font-bold bg-linear-to-b from-[#f3d9a9] to-[#a67c37] bg-clip-text text-[#f3d9a9] lg:text-transparent leading-tight mb-1">
                     {student.name}
                   </h3>
-                  <p className="text-gray-300 text-xs md:text-sm mb-4 font-light">
+                  <p className="text-gray-300 text-xs md:text-sm mb-2.5 font-light">
                     {student.description}
                   </p>
                 </div>
-                <div className="flex items-start gap-2 text-[11px] md:text-[13px] text-gray-400 leading-snug">
+                <div className="flex items-start gap-2 text-[11px] md:text-[13px] text-gray-400 leading-snug px-5 lg:px-0">
                   <p className="whitespace-pre-wrap">{student.achievements}</p>
                 </div>
               </div>
