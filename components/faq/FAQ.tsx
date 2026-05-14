@@ -153,7 +153,7 @@ function FAQItem({
         className="w-full flex items-center justify-between p-4 md:p-6 text-left gap-4 group cursor-pointer"
       >
         <span
-          className={`text-sm md:text-base font-medium transition-colors duration-300 ${
+          className={`text-sm md:text-base font-medium transition-colors duration-300 whitespace-pre-wrap ${
             isOpen ? "text-[#f3d9a9]" : "text-gray-300 group-hover:text-white"
           }`}
         >
@@ -176,7 +176,7 @@ function FAQItem({
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+        <div className="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5 whitespace-pre-wrap">
           <p>{item.answer}</p>
         </div>
       </div>
