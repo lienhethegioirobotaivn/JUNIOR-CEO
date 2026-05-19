@@ -10,12 +10,7 @@ export function OfficeVisit({ item_8, item_9 }: OfficeVisitProps) {
       <div className="mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* LEFT: INTERACTIVE MAP BOX */}
         <div className="relative lg:col-span-2 overflow-hidden rounded-2xl border border-white/10">
-          <Image
-            src={item_8}
-            alt="Location Image"
-            fill
-            className="object-cover object-center"
-          />
+          <iframe src={item_8} className="size-full" />
         </div>
 
         {/* RIGHT: CONTENT BOX */}
