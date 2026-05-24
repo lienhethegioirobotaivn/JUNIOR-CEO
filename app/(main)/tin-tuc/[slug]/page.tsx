@@ -5,47 +5,71 @@ import { notFound } from "next/navigation";
 import { CornerUpLeft } from "lucide-react";
 import { Metadata } from "next";
 
+export const revalidate = 60;
+
+const baseURL = process.env.BASEURL;
+if (!baseURL) {
+  throw new Error("BASEURL is missing in .env");
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const blog = await getBlog(slug);
+  try {
+    const { slug } = await params;
 
-  if (!blog) {
+    const blog = await getBlog(slug);
+
+    if (!blog) {
+      return {
+        title: "404 Not found",
+      };
+    }
+
     return {
-      title: "404 Not found",
+      title: blog.title?.rendered || "Tin tức",
+
+      description: blog.acf?.description || "",
+
+      alternates: {
+        canonical: `${baseURL}/tin-tuc/${blog.slug}`,
+      },
+
+      openGraph: {
+        title: blog.title?.rendered || "Tin tức",
+
+        description: blog.acf?.description || "",
+
+        url: `${baseURL}/tin-tuc/${blog.slug}`,
+
+        images: blog.acf?.image
+          ? [
+              {
+                url: blog.acf.image,
+              },
+            ]
+          : [],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+
+        title: blog.title?.rendered || "Tin tức",
+
+        description: blog.acf?.description || "",
+
+        images: blog.acf?.image ? [blog.acf.image] : [],
+      },
+    };
+  } catch (error) {
+    console.error("GENERATE METADATA ERROR:", error);
+
+    return {
+      title: "Tin tức",
     };
   }
-
-  return {
-    title: blog.title.rendered,
-
-    description: blog.acf.description,
-
-    alternates: {
-      canonical: `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
-    },
-
-    openGraph: {
-      title: blog.title.rendered,
-      description: blog.acf.description,
-      url: `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
-      images: [
-        {
-          url: blog.acf.image,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: blog.title.rendered,
-      description: blog.acf.description,
-      images: [blog.acf.image],
-    },
-  };
 }
 
 export default async function BlogDetail({ params }: Props) {
@@ -61,8 +85,8 @@ export default async function BlogDetail({ params }: Props) {
 
   const currentTags = blog.acf?.hashtag || [];
 
-  const relatedBlogs = blogs
-    .filter((item) => item.slug !== blog.slug)
+  const relatedBlogs = (Array.isArray(blogs) ? blogs : [])
+    .filter((item) => item?.slug && item.slug !== blog.slug)
     .map((item) => {
       const tags = item.acf?.hashtag || [];
 
@@ -89,7 +113,7 @@ export default async function BlogDetail({ params }: Props) {
     description: blog.acf.description,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://juniorceo.edu.vn/tin-tuc/${blog.slug}`,
+      "@id": `${baseURL}/tin-tuc/${blog.slug}`,
     },
   };
 
@@ -132,14 +156,15 @@ export default async function BlogDetail({ params }: Props) {
 
               {!!blog.acf?.hashtag?.length && (
                 <div className="flex flex-wrap gap-3 mt-6">
-                  {blog.acf.hashtag.map((tag: string) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 rounded-full bg-[#c5a47e]/10 hover:bg-[#c5a47e] border border-[#c5a47e]/20 hover:border-[#c5a47e/40] text-[#f9e3ad] hover:text-[#f5f2eb] text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {Array.isArray(blog.acf?.hashtag) &&
+                    blog.acf.hashtag.map((tag: string) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-2 rounded-full bg-[#c5a47e]/10 hover:bg-[#c5a47e] border border-[#c5a47e]/20 hover:border-[#c5a47e/40] text-[#f9e3ad] hover:text-[#f5f2eb] text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                 </div>
               )}
             </header>
@@ -212,14 +237,17 @@ export default async function BlogDetail({ params }: Props) {
 
                         {!!item.acf?.hashtag?.length && (
                           <div className="flex flex-wrap gap-2 mt-4">
-                            {item.acf.hashtag.slice(0, 3).map((tag: string) => (
-                              <span
-                                key={tag}
-                                className="text-xs text-[#c5a47e] hover:text-[#e0b98b]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
+                            {Array.isArray(item.acf?.hashtag) &&
+                              item.acf.hashtag
+                                .slice(0, 3)
+                                .map((tag: string) => (
+                                  <span
+                                    key={tag}
+                                    className="text-xs text-[#c5a47e] hover:text-[#e0b98b]"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
                           </div>
                         )}
                       </div>
