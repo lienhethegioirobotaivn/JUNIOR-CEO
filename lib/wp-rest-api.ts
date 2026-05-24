@@ -13,14 +13,14 @@ const REST_URL = process.env.NEXT_PUBLIC_WP_REST_URL;
 
 async function wpFetch<T>(endpoint: string, retries = 3): Promise<T | null> {
   if (!REST_URL) {
-    console.error("Error: WP_REST_URL is missing in .env");
+    console.error("Error: NEXT_PUBLIC_WP_REST_URL is missing in .env");
 
     return null;
   }
 
   for (let i = 0; i < retries; i++) {
     try {
-      console.log(`WP FETCH: ${endpoint}`);
+      // console.log(`WP FETCH: ${endpoint}`);
 
       const res = await fetch(`${REST_URL}${endpoint}`, {
         next: {
