@@ -4,7 +4,6 @@ import {
   NewsGrid,
   Pagination,
   Sidebar,
-  ExpertPerspectives,
   Newsletter,
 } from "@/components/tin-tuc";
 // import { getBlogs } from "@/lib/wp-rest-api";
@@ -193,9 +192,6 @@ export default async function BlogPage({
             <Sidebar mostViewedPosts={mostViewedPosts} />
           </aside>
         </div>
-        <ExpertPerspectives
-          expert_perspectives={pageData.expert_perspectives}
-        />
       </main>
       <Newsletter newsletter={pageData.newsletter} />
     </main>
