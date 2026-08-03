@@ -54,7 +54,7 @@ export function Navbar() {
             alt="Logo"
             width={150}
             height={50}
-            className="h-auto w-auto object-contain transition-all duration-300"
+            className="w-37.5 h-auto object-contain transition-all duration-300"
             priority
           />
         </Link>
