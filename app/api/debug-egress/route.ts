@@ -6,7 +6,7 @@ export async function GET() {
   const start = Date.now();
 
   try {
-    const res = await fetch(`${REST_URL}/pages?slug=tu-van`, {
+    const res = await fetch(`${REST_URL}/pages?slug=footer`, {
       cache: "no-store",
     });
 
