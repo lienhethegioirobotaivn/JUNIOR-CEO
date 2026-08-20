@@ -8,6 +8,8 @@ import {
 
 import { Blog } from "@/types/wordpress";
 
+export const revalidate = 60;
+
 export default async function NewsDetails({
   params,
 }: {
@@ -22,7 +24,7 @@ export default async function NewsDetails({
   }
 
   const res = await fetch(`${REST_URL}/blog?slug=${slug}&_embed`, {
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
   const data: Blog[] = await res.json();
@@ -34,7 +36,7 @@ export default async function NewsDetails({
   }
 
   const relatedRes = await fetch(`${REST_URL}/blog?_embed&per_page=20`, {
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
   const relatedData: Blog[] = await relatedRes.json();
